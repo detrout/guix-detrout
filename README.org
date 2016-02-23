@@ -1,0 +1,19 @@
+* Diane's Guix Overlay
+
+A collection of custom Guix packages that are either unsuitable for
+submission upstream or I haven't gotten around to it yet.
+
+* Usage
+
+Point Guix toward the root of the source tree
+
+#+BEGIN_SRC: shell
+export GUIX_PACKAGE_PATH=$(pwd)
+#+END_SRC
+
+The packages in this repo will take precedence over those in the
+official distribution.
+
+copied and modified from:
+https://git.dthompson.us/guix-custom.git/blob/HEAD:/README.md via
+https://github.com/Millak/my-guix
