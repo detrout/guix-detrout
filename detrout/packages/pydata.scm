@@ -1,8 +1,6 @@
-;;; GNU Guix --- Functional package management for GNU
-;;; Copyright © 2015 Diane Trout <diane@ghic.org>
+;;; Copyright © 2016 Diane Trout <diane@ghic.org>
 ;;;
-;;; Acutally this isn't currently part of Guix,
-;;; these are my local packages, but it should be under the GPL anyway.
+;;; These are my local package that are not currently part of Guix,
 ;;;
 ;;; GNU Guix is free software; you can redistribute it and/or modify it
 ;;; under the terms of the GNU General Public License as published by
