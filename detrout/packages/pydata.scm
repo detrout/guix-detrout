@@ -245,7 +245,8 @@
        ("python-simplegeneric" ,python-simplegeneric)
        ("python-traitlets" ,python-traitlets)
        ("python-nbformat" ,python-nbformat)
-       ("python-nbconvert" ,python-nbconvert)))
+       ("python-nbconvert" ,python-nbconvert)
+       ("python-pexpect" ,python-pexpect)))
        ;; extra_requires that create loops ipython
        ;;("python-ipywidgets" ,python-ipywidgets)
        ;;("python-ipyparallel" ,python-ipyparallel)
