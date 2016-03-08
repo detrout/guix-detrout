@@ -36,52 +36,15 @@
   #:use-module (guix build-system trivial)
   #:use-module (srfi srfi-1))
 
-(define-public det-python
-  (package (inherit python)
-           (name "det-python")
-           (version "3.5.1")
-           (source (origin
-                     (method url-fetch)
-                     (uri (string-append "https://www.python.org/ftp/python/"
-                                         version "/Python-" version ".tar.xz"))
-                     (patches (map search-patch
-                                   '("python-fix-tests.patch"
-                                     ;; XXX Try removing this patch for python > 3.4.3
-                                     "python-disable-ssl-test.patch"
-                                     "python-3-deterministic-build-info.patch"
-                                     "python-3-search-paths.patch")))
-                     (patch-flags '("-p0"))
-                     (sha256
-                      (base32 "1j95yx32ggqx8jf13h3c8qfp34ixpyg8ipqcdjmn143d6q67rmf6"))))))
-
-(define package-with-explicit-python
-  (@@ (guix build-system python) package-with-explicit-python))
-
-(define package-with-det-python
-  ;; package-with-explicit-python isn't exported,
-  ;; but it's useful for our purposes
-  (package-with-explicit-python det-python
-                                "python-" "det-python-"))
-
-(define-public det-python-pytz
-  (package-with-det-python python-pytz))
-
-(define-public det-python-numpy
-  (package-with-det-python python-numpy))
-
-(define-public det-python-pyzmq
-  (package-with-det-python python-pyzmq))
-
-(define-public det-python-pandas
-  (package-with-det-python
-   (package
-     (inherit python-pandas)
-    (version "0.17.1")
-    (source (origin
-              (method url-fetch)
-              (uri (pypi-uri "pandas" version))
-              (sha256
-               (base32 "1j95yx32ggqx8jf13h3c8qfp34ixpyg8ipqcdjmn143d6q67rmf6")))))))
+;;(define-public python-pandas
+;;  (package
+;;    (inherit python-pandas)
+;;    (version "0.17.1")
+;;    (source (origin
+;;              (method url-fetch)
+;;              (uri (pypi-uri "pandas" version))
+;;              (sha256
+;;               (base32 "1j95yx32ggqx8jf13h3c8qfp34ixpyg8ipqcdjmn143d6q67rmf6"))))))
 
 ;;; New packages
 
@@ -119,9 +82,6 @@
 (define-public python2-jupyter-core
   (package-with-python2 python-jupyter-core))
 
-(define-public det-python-jupyter-core
-  (package-with-det-python python-jupyter-core))
-
 (define-public python-nbformat
   (package
     (name "python-nbformat")
@@ -158,9 +118,6 @@
 
 (define-public python2-nbformat
   (package-with-python2 python-nbformat))
-
-(define-public det-python-nbformat
-  (package-with-det-python python-nbformat))
 
 (define-public python-nbconvert
   (package
@@ -201,9 +158,6 @@
 (define-public python2-nbconvert
   (package-with-python2 python-nbconvert))
 
-(define-public det-python-nbconvert
-  (package-with-det-python python-nbconvert))
-
 (define-public python-jupyter-client
   (package
     (name "python-jupyter-client")
@@ -235,9 +189,6 @@
 
 (define-public python2-jupyter-client
   (package-with-python2 python-jupyter-client))
-
-(define-public det-python-jupyter-client
-  (package-with-det-python python-jupyter-client))
 
 (define-public python-ipykernel
   (package
@@ -273,10 +224,6 @@
 
 (define-public python2-ipykernel
   (package-with-python2 python-ipykernel))
-
-(define-public det-python-ipykernel
-  (package-with-det-python python-ipykernel))
-
 
 (define-public python-ipython
   (package
@@ -323,9 +270,6 @@
 (define-public python2-ipython
   (package-with-python2 python-ipython))
 
-(define-public det-python-ipython
-  (package-with-det-python python-ipython))
-
 (define-public python-ipyparallel
   (package
     (name "python-ipyparallel")
@@ -368,9 +312,6 @@
 (define-public python2-ipyparallel
   (package-with-python2 python-ipyparallel))
 
-(define-public det-python-ipyparallel
-  (package-with-det-python python-ipyparallel))
-
 (define-public python-jupyter-console
   (package
     (name "python-jupyter-console")
@@ -406,9 +347,6 @@
 
 (define-public python2-jupyter-console
   (package-with-python2 python-jupyter-console))
-
-(define-public det-python-jupyter-console
-  (package-with-det-python python-jupyter-console))
 
 (define-public python-notebook
   (package
@@ -456,10 +394,6 @@
 (define-public python2-notebook
   (package-with-python2 python-notebook))
 
-(define-public det-python-notebook
-  (package-with-det-python python-notebook))
-
-
 (define-public python-qtconsole
   (package
     (name "python-qtconsole")
@@ -500,9 +434,6 @@
 (define-public python2-qtconsole
   (package-with-python2 python-qtconsole))
 
-(define-public det-python-qtconsole
-  (package-with-det-python python-qtconsole))
-
 (define-public python-ipywidgets
   (package
     (name "python-ipywidgets")
@@ -539,9 +470,6 @@
 (define-public python2-ipywidgets
   (package-with-python2 python-ipywidgets))
 
-(define-public det-python-ipywidgets
-  (package-with-det-python python-ipywidgets))
-
 (define-public python-jupyter
   (package
     (name "python-jupyter")
@@ -575,9 +503,6 @@
 (define-public python2-jupyter
   (package-with-python2 python-jupyter))
 
-(define-public det-python-jupyter
-  (package-with-det-python python-jupyter))
-
 (define-public python-flask
   (package
     (name "python-flask")
@@ -609,9 +534,6 @@
 
 (define-public python2-flask
   (package-with-python2 python-flask))
-
-(define-public det-python-flask
-  (package-with-det-python python-flask))
 
 (define-public python-werkzeug
   (package
@@ -647,9 +569,6 @@
 
 (define-public python2-werkzeug
   (package-with-python2 python-werkzeug))
-
-(define-public det-python-werkzeug
-  (package-with-det-python python-werkzeug))
 
 (define-public python-bokeh
   (package
@@ -687,9 +606,6 @@
 (define-public python2-bokeh
   (package-with-python2 python-bokeh))
 
-(define-public det-python-bokeh
-  (package-with-det-python python-bokeh))
-
 (define-public python-odo
   (package
     (name "python-odo")
@@ -718,9 +634,6 @@
 (define-public python2-odo
   (package-with-python2 python-odo))
 
-(define-public det-python-odo
-  (package-with-det-python python-odo))
-
 (define-public python-datashape
   (package
     (name "python-datashape")
@@ -747,9 +660,6 @@
 (define-public python2-datashape
   (package-with-python2 python-datashape))
 
-(define-public det-python-datashape
-  (package-with-det-python python-datashape))
-
 (define-public python-multipledispatch
   (package
     (name "python-multipledispatch")
@@ -772,9 +682,6 @@
 
 (define-public python2-multipledispatch
   (package-with-python2 python-multipledispatch))
-
-(define-public det-python-multipledispatch
-  (package-with-det-python python-multipledispatch))
 
 (define-public python-toolz
   (package
@@ -800,9 +707,6 @@
 (define-public python2-toolz
   (package-with-python2 python-toolz))
 
-(define-public det-python-toolz
-  (package-with-det-python det-python-toolz))
-
 (define-public python-django
   (package
     (name "python-django")
@@ -827,7 +731,5 @@
 (define-public python2-django
   (package-with-python2 python-django))
 
-(define-public det-python-django
-  (package-with-det-python python-django))
 ;; wsgiref
 ;; factory_boy
