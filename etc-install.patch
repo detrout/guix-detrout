@@ -1,0 +1,55 @@
+--- a/spectrum/src/CMakeLists.txt
++++ b/spectrum/src/CMakeLists.txt
+@@ -34,27 +34,27 @@
+ INSTALL(FILES
+ 	sample2_gateway.cfg
+ 	RENAME spectrum.cfg.example
+-	DESTINATION /etc/spectrum2/transports
++	DESTINATION ${CMAKE_INSTALL_PREFIX}/etc/spectrum2/transports
+ 	)
+ 
+ INSTALL(FILES
+ 	sample2.cfg
+ 	RENAME spectrum_server_mode.cfg.example
+-	DESTINATION /etc/spectrum2/transports
++	DESTINATION ${CMAKE_INSTALL_PREFIX}/etc/spectrum2/transports
+ 	)
+ 
+ INSTALL(FILES
+ 	backend-logging.cfg
+-	DESTINATION /etc/spectrum2
++	DESTINATION ${CMAKE_INSTALL_PREFIX}/etc/spectrum2
+ 	)
+ 
+ INSTALL(FILES
+ 	logging.cfg
+-	DESTINATION /etc/spectrum2
++	DESTINATION ${CMAKE_INSTALL_PREFIX}/etc/spectrum2
+ 	)
+ 
+ INSTALL(FILES
+ 	manager-logging.cfg
+-	DESTINATION /etc/spectrum2
++	DESTINATION ${CMAKE_INSTALL_PREFIX}/etc/spectrum2
+ 	)
+ 
+--- a/spectrum_manager/src/CMakeLists.txt
++++ b/spectrum_manager/src/CMakeLists.txt
+@@ -26,8 +26,8 @@
+ # ENDIF()
+ 
+ install(CODE "
+-if (NOT EXISTS \"/etc/spectrum2/spectrum_manager.cfg\")
+-file(INSTALL DESTINATION \"/etc/spectrum2\" TYPE FILES \"${CMAKE_CURRENT_SOURCE_DIR}/spectrum_manager.cfg\")
++if (NOT EXISTS \"${CMAKE_INSTALL_PREFIX}/etc/spectrum2/spectrum_manager.cfg\")
++file(INSTALL DESTINATION \"${CMAKE_INSTALL_PREFIX}/etc/spectrum2\" TYPE FILES \"${CMAKE_CURRENT_SOURCE_DIR}/spectrum_manager.cfg\")
+ endif()
+ ")
+ 
+@@ -35,5 +35,5 @@
+ 
+ INSTALL(DIRECTORY
+ 	html
+-	DESTINATION /var/lib/spectrum2_manager
++	DESTINATION ${CMAKE_INSTALL_PREFIX}
+ 	)
