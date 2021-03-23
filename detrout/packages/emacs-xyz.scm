@@ -36,7 +36,7 @@
                   (commit (concat ("v" version)))))
             (file-name (git-file-name name version))
             (sha256
-             (base32 ""))))
+             (base32 "1vfcxyrla193dlc0r7g89gk213gbbm3r6359nkg0b03kxpq7i2nk"))))
    (build-system emacs-build-system)
    (home-page "https://git.kyleam.com/snakemake-mode/about/")
    (synopsis "Emacs support for Snakemake")
