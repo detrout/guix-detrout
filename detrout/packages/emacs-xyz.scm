@@ -19,11 +19,11 @@
 (define-module (detrout packages emacs-xyz)
   #:use-module ((guix licenses) #:prefix license:)
   #:use-module (guix packages)
+  #:use-module (guix packages emacs)
   #:use-module (guix download)
   #:use-module (guix git-download)
   #:use-module (guix utils)
-  #:use-module (guix build-system emacs)
-  #:use-module (srfi srfi-1))
+  #:use-module (guix build-system emacs))
 
 (define-public emacs-snakemake-mode
   (package
