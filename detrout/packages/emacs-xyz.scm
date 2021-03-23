@@ -48,4 +48,4 @@
   * snakemake-mode.el provides a major mode for editing Snakemake
     files.
   * snakemake.el defines a popup interface for calling Snakemake.")
-   (license license:gpl3+)))
+   (license license:gpl3+))))
