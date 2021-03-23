@@ -37,7 +37,7 @@
             (sha256
              (base32 "1vfcxyrla193dlc0r7g89gk213gbbm3r6359nkg0b03kxpq7i2nk"))))
    (build-system emacs-build-system)
-   (propogated-inputs
+   (propagated-inputs
     `(("emacs-dash" ,emacs-dash)
       ("emacs-magit-popup" ,emacs-magit-popup))
    (home-page "https://git.kyleam.com/snakemake-mode/about/")
