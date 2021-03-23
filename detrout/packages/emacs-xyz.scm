@@ -33,7 +33,7 @@
             (method git-fetch)
             (uri (git-reference
                   (url "https://git.kyleam.com/snakemake-mode")
-                  (commit (string-append ("v" version)))))
+                  (commit (string-append "v" version))))
             (file-name (git-file-name name version))
             (sha256
              (base32 "1vfcxyrla193dlc0r7g89gk213gbbm3r6359nkg0b03kxpq7i2nk"))))
