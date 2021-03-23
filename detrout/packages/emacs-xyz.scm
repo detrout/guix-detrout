@@ -16,7 +16,7 @@
 ;;; along with GNU Guix.  If not, see <http://www.gnu.org/licenses/>.
 ;;;
 
-(define-module (detrout packages pydata)
+(define-module (detrout packages emacs-xyz)
   #:use-module ((guix licenses) #:prefix license:)
   #:use-module (guix packages)
   #:use-module (guix download)
