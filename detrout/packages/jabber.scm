@@ -22,10 +22,8 @@
   #:use-module (gnu packages protobuf)
   #:use-module (gnu packages python)
   #:use-module (gnu packages qt)
-  #:use-module (gnu packages tcsh)
   #:use-module (gnu packages tls)
-  #:use-module (gnu packages xml)
-  #:use-module (gnu packages zip))
+  #:use-module (gnu packages xml))
 
   (define-public boost@1.55
     (package
