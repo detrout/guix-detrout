@@ -22,7 +22,8 @@
   #:use-module (guix build-system emacs)
   #:use-module (guix download)
   #:use-module (guix git-download)
-  #:use-module (gnu packages emacs))
+  #:use-module (gnu packages emacs)
+  #:use-module (gnu packages emacs-xyz))
 
 (define-public emacs-snakemake-mode
   (package
