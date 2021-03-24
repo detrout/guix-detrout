@@ -39,7 +39,7 @@
    (build-system emacs-build-system)
    (propagated-inputs
     `(("emacs-dash" ,emacs-dash)
-      ("emacs-magit-popup" ,emacs-magit-popup))
+      ("emacs-magit-popup" ,emacs-magit-popup)))
    (home-page "https://git.kyleam.com/snakemake-mode/about/")
    (synopsis "Emacs support for Snakemake")
    (description
@@ -47,4 +47,4 @@
   * snakemake-mode.el provides a major mode for editing Snakemake
     files.
   * snakemake.el defines a popup interface for calling Snakemake.")
-   (license license:gpl3+))))
+   (license license:gpl3+)))
