@@ -128,9 +128,10 @@ and sending commands.")
                                  out)))))
            (delete 'check)
            (delete 'install))))
-      (home-page "")
-      (synopsis "synopsis")
-      (description "description")
+      (home-page "https://swift.im/")
+      (synopsis "Swift XMPP client")
+      (description "An elegant, secure, adaptable and intuitive XMPP
+Client.  Available for free on Windows, Mac OSX and Linux.")
       (license license:gpl3+)))
 
 
