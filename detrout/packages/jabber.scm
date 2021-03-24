@@ -175,7 +175,7 @@ and output formats.")
       (source (origin
                 (method git-fetch)
                 (uri (git-reference
-                      (url "https://github.com/hanzz/spectrum2.git")
+                      (url "https://github.com/SpectrumIM/spectrum2")
                       (commit "2.0.3")))
                 (file-name (string-append name "-" version "-checkout"))
                 (sha256 (base32 "0nn8506k6qa7g13wjn7bqla4zhdyb56hlz19yn1aryfk52nh6b31"))
@@ -204,7 +204,7 @@ and output formats.")
          ("sqlite" ,sqlite)
          ("swift-im" ,swift-im)
          ("libxml2" ,libxml2)))
-      (home-page "http://spectrum.im/")
+      (home-page "https://spectrum.im/")
       (synopsis "Gateway between XMPP and other text services")
       (description "Spectrum is an XMPP server component that connects
 to other services such as: libpidgin supported IM networks; Twitter;
