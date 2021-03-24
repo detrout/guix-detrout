@@ -39,7 +39,7 @@
                 (sha256
                  (base32 "0y9fpx7zsfjjzsh2ajv9x61jx9j6kk7wxjsk82sm132fhamy1bri"))))
       (build-system gnu-build-system)
-      (inputs
+      (native-inputs
        `(("pkg-config" ,pkg-config)
          ("autoconf" ,autoconf)
          ("automake" ,automake)
