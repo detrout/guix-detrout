@@ -153,8 +153,7 @@ Client.  Available for free on Windows, Mac OSX and Linux.")
                                          "log4cxx-bugfix-LOGCXX-249.patch"
                                          ;;"log4cxx-bugfix-LOGCXX-385.patch"
                                          "log4cxx-bugfix-LOGCXX-322.patch"
-                                         "log4cxx-bugfix-LOGCXX-365.patch"
-                                         ))))
+                                         "log4cxx-bugfix-LOGCXX-365.patch"))))
       (build-system gnu-build-system)
       (inputs
        `(("apr" ,apr)
