@@ -22,8 +22,35 @@
   #:use-module (guix build-system emacs)
   #:use-module (guix download)
   #:use-module (guix git-download)
-  #:use-module (gnu packages emacs)
   #:use-module (gnu packages emacs-xyz))
+
+(define-public emacs-magit-popup
+  (package
+   (name "emacs-magit-popup")
+   (version "2.13.3")
+   (source
+    (origin
+     (method git-fetch)
+     (uri (git-reference
+           (url "https://github.com/magit/magit-popup")
+           (commit version)))
+     (file-name (git-file-name name version))
+     (sha256
+      (base32 "1if4m7jf43jhrizagznyyqxph8vcn5157d66991kvggp61jj0pmi"))))
+   (build-system emacs-build-system)
+   (inputs
+    `(("emacs-dash" ,emacs-dash)))
+   (home-page "https://github.com/magit/magit-popup")
+   (synopsis "Provides a generic interface for toggling switches and setting options")
+   (description
+    "This package implements a generic interface for toggling switches
+and setting options and then invoking an Emacs command that does
+something with these arguments.  Usually the command calls an external
+process with the specified arguments.
+
+This package has been superseded by Transient.  No new features will be
+added but bugs will be fixed.")
+   (license license:gpl3+)))
 
 (define-public emacs-snakemake-mode
   (package
@@ -39,9 +66,8 @@
      (sha256
       (base32 "0syzj0pgaia7w4maxdk62mvjw8k4ifr2aaxr7yyza869vp7zn0mp"))))
    (build-system emacs-build-system)
-   (propagated-inputs
-    `(("emacs-dash" ,emacs-dash)
-      ("emacs-magit-popup" ,emacs-magit-popup)))
+   (inputs
+    `(("emacs-magit-popup" ,emacs-magit-popup)))
    (home-page "https://git.kyleam.com/snakemake-mode/about/")
    (synopsis "Emacs support for Snakemake")
    (description
