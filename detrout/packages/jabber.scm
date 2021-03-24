@@ -44,8 +44,7 @@
          ("autoconf" ,autoconf)
          ("automake" ,automake)
          ("openssl" ,openssl)
-         ("qt-4" ,qt-4)
-         ))
+         ("qt-4" ,qt-4)))
       (arguments
        `(#:phases
          (modify-phases %standard-phases
@@ -69,11 +68,9 @@
                                                    root "/imports"))
                       (install_qml2 (string-append "IRC_INSTALL_QML="
                                                    root "/qml"))
-                      (lflags (string-append "QMAKE_LFLAGS+=-Wl,-rpath=" root "/lib"))
-                      )
+                      (lflags (string-append "QMAKE_LFLAGS+=-Wl,-rpath=" root "/lib")))
                  (zero? (system* "qmake" lflags prefix install_libs install_headers
-                                 install_features install_qml1 install_qml2 )))))
-           )))
+                                 install_features install_qml1 install_qml2 ))))))))
 
       (synopsis "IRC Library")
       (description "Communi provides convenient classes for
@@ -127,15 +124,13 @@ and sending commands.")
                                  "swiften_dll=1"
                                  "Swiften"
                                  (string-append "SWIFTEN_INSTALLDIR=" out)
-                                 out
-                                 )))))
+                                 out)))))
            (delete 'check)
            (delete 'install))))
       (home-page "")
       (synopsis "synopsis")
       (description "description")
-      (license license:gpl3+)
-      ))
+      (license license:gpl3+)))
 
 
   (define-public log4cxx
