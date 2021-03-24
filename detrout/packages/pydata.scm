@@ -49,8 +49,7 @@
             "0wn4sfs06sq70xizdb3sgs5bhxlzisn5qy4zrjpgmmp7d27kv9rl"))))
     (build-system python-build-system)
     (inputs
-     `(("python-setuptools" ,python-setuptools)
-       ("python-six" ,python-six)
+     `(("python-six" ,python-six)
        ("python-requests" ,python-requests)
        ("python-pyyaml" ,python-pyyaml)
        ("python-dateutil" ,python-dateutil)
@@ -90,7 +89,6 @@
        ("python-networkx" ,python-networkx)
        ("python-numpy" ,python-numpy)
        ("python-pandas" ,python-pandas)
-       ("python-setuptools" ,python-setuptools)
        ("python-toolz" ,python-toolz)))
     (home-page "https://github.com/blaze/odo")
     (synopsis "Data migration utilities")
@@ -115,8 +113,7 @@
     (inputs
      `(("python-dateutil" ,python-dateutil)
        ("python-multipledispatch" ,python-multipledispatch)
-       ("python-numpy" ,python-numpy)
-       ("python-setuptools" ,python-setuptools)))
+       ("python-numpy" ,python-numpy)))
     (home-page
      "http://datashape.readthedocs.org/en/latest/")
     (synopsis "A data description language.")
@@ -138,8 +135,6 @@
         (base32
          "0bmra61cj5mayszp8qabr8k9j3waz1k8b2p46r2l5s15xnrizm07"))))
     (build-system python-build-system)
-    (inputs
-     `(("python-setuptools" ,python-setuptools)))
     (home-page
      "http://github.com/mrocklin/multipledispatch/")
     (synopsis "Multiple dispatch")
@@ -161,8 +156,6 @@
         (base32
          "1zass275yjn1srw7rgkq6ghvhz9gr2zsk21hpa46qsx1wzjwkhj3"))))
     (build-system python-build-system)
-    (inputs
-     `(("python-setuptools" ,python-setuptools)))
     (home-page "http://github.com/pytoolz/toolz/")
     (synopsis
      "List processing tools and functional utilities")
