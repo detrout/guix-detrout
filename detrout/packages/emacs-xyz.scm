@@ -29,14 +29,12 @@
   (package
    (name "emacs-snakemake-mode")
    (version "1.8.0")
-   (source (origin
-            (method git-fetch)
-            (uri (git-reference
-                  (url "https://git.kyleam.com/snakemake-mode")
-                  (commit (string-append "v" version))))
-            (file-name (git-file-name name version))
-            (sha256
-             (base32 "1vfcxyrla193dlc0r7g89gk213gbbm3r6359nkg0b03kxpq7i2nk"))))
+   (source
+    (origin
+     (method url-fetch)
+     (uri (string-append "https://git.kyleam.com/snakemake-mode/snapshot/snakemake-mode-" version ".tar.gz"))
+     (sha256
+      (base32 "0syzj0pgaia7w4maxdk62mvjw8k4ifr2aaxr7yyza869vp7zn0mp"))))
    (build-system emacs-build-system)
    (propagated-inputs
     `(("emacs-dash" ,emacs-dash)
