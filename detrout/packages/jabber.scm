@@ -109,7 +109,8 @@ and sending commands.")
            (add-after 'unpack 'scons-propgate-environment
              (lambda _
                (substitute* "BuildTools/SCons/SConscript.boot"
-                 (("^  env = Environment\\(ENV = env_ENV, ") "  env = Environment(ENV=os.environ, "))))
+                            (("^  env = Environment\\(ENV = env_ENV, ")
+                             "  env = Environment(ENV=os.environ, "))))
            (replace 'build
              (lambda* (#:key inputs outputs #:allow-other-keys)
                (let ((out (assoc-ref outputs "out"))
