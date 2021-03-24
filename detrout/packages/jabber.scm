@@ -149,7 +149,9 @@ across a broad spectrum of applications.")
            )))
 
       (synopsis "IRC Library")
-      (description "Communi provides convenient classes for establishing connections to IRC servers, handling incoming messages, and sending commands.")
+      (description "Communi provides convenient classes for
+establishing connections to IRC servers, handling incoming messages,
+and sending commands.")
       (home-page "https://github.com/communi/libcommuni")
       (license license:bsd-3)))
 
@@ -237,7 +239,10 @@ across a broad spectrum of applications.")
       (arguments `(#:tests? #f))
       (home-page "https://logging.apache.org/log4cxx/index.html")
       (synopsis "Logging library for C++")
-      (description "Log4cxx is the C++ port of log4j, a logging framework for JAVA. Log4cxx attempts to mimic log4j usage as much as the language will allow and to be compatible with log4j configuration and output formats.")
+      (description "Log4cxx is the C++ port of log4j, a logging
+framework for JAVA.  Log4cxx attempts to mimic log4j usage as much as
+the language will allow and to be compatible with log4j configuration
+and output formats.")
       (license license:asl2.0)))
 
   (define-public spectrum2
@@ -278,5 +283,7 @@ across a broad spectrum of applications.")
          ("libxml2" ,libxml2)))
       (home-page "http://spectrum.im/")
       (synopsis "Gateway between XMPP and other text services")
-      (description "Spectrum is an XMPP server component that connects to other services such as: libpidgin supported IM networks; Twitter; or even the Interactive fiction interpreter Frotz")
+      (description "Spectrum is an XMPP server component that connects
+to other services such as: libpidgin supported IM networks; Twitter;
+or even the Interactive fiction interpreter Frotz")
       (license license:bsd-3)))

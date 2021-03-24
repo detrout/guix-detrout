@@ -32,7 +32,10 @@
    (source
     (origin
      (method url-fetch)
-     (uri (string-append "https://git.kyleam.com/snakemake-mode/snapshot/snakemake-mode-" version ".tar.gz"))
+     (uri (string-append
+           "https://git.kyleam.com/snakemake-mode/snapshot/snakemake-mode-"
+           version
+           ".tar.gz"))
      (sha256
       (base32 "0syzj0pgaia7w4maxdk62mvjw8k4ifr2aaxr7yyza869vp7zn0mp"))))
    (build-system emacs-build-system)
