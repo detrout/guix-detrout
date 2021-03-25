@@ -33,7 +33,7 @@
      (method git-fetch)
      (uri (git-reference
            (url "https://github.com/magit/magit-popup")
-           (commit version)))
+           (commit (string-append "v" version))))
      (file-name (git-file-name name version))
      (sha256
       (base32 "1if4m7jf43jhrizagznyyqxph8vcn5157d66991kvggp61jj0pmi"))))
