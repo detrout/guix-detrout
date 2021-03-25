@@ -2,6 +2,5 @@
 
 (channel
  (version 0)
- (directory "detrout")
  (url "https://github.com/detrout/guix-detrout.git"))
 
