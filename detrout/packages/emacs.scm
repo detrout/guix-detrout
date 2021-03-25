@@ -38,7 +38,7 @@
      (sha256
       (base32 "1if4m7jf43jhrizagznyyqxph8vcn5157d66991kvggp61jj0pmi"))))
    (build-system emacs-build-system)
-   (inputs
+   (propagated-inputs
     `(("emacs-dash" ,emacs-dash)))
    (home-page "https://github.com/magit/magit-popup")
    (synopsis "Provides a generic interface for toggling switches and setting options")
