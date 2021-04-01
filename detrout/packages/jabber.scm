@@ -47,7 +47,7 @@
          ("autoconf" ,autoconf)
          ("automake" ,automake)
          ("openssl" ,openssl)
-         ("qt-4" ,qt-4)))
+         ("qt-5" ,qt-5)))
       (arguments
        `(#:phases
          (modify-phases %standard-phases
@@ -103,7 +103,7 @@ and sending commands.")
          ("expat" ,expat)
          ("libidn" ,libidn)
          ("openssl" ,openssl)
-         ("qt-4" ,qt-4)
+         ("qt-5" ,qt-5)
          ("libxml2" ,libxml2)))
       (arguments
        `(#:phases
@@ -122,7 +122,7 @@ and sending commands.")
                      (libc (assoc-ref inputs "libc"))
                      (libidn (assoc-ref inputs "libidn"))
                      (openssl (assoc-ref inputs "openssl"))
-                     (qt (assoc-ref inputs "qt-4"))
+                     (qt (assoc-ref inputs "qt-5"))
                      (libxml2 (assoc-ref inputs "libxml2")))
                  (zero? (system* "scons" "--debug=presub"
                                  "swiften_dll=1"
@@ -203,7 +203,7 @@ and output formats.")
          ("pidgin" ,pidgin)
          ("popt" ,popt)
          ("protobuf" ,protobuf)
-         ("qt-4" ,qt-4)
+         ("qt-5" ,qt-5)
          ("sqlite" ,sqlite)
          ("swift-im" ,swift-im)
          ("libxml2" ,libxml2)))
