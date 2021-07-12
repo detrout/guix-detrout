@@ -28,6 +28,7 @@
   #:use-module (gnu packages bash)
   #:use-module (gnu packages bison)
   #:use-module (gnu packages bioconductor)
+  #:use-module (gnu packages bioinformatics)
   #:use-module (gnu packages boost)
   #:use-module (gnu packages check)
   #:use-module (gnu packages code)
@@ -66,6 +67,7 @@
   #:use-module (gnu packages jemalloc)
   #:use-module (gnu packages linux)
   #:use-module (gnu packages lisp-xyz)
+  #:use-module (gnu packages llvm)
   #:use-module (gnu packages logging)
   #:use-module (gnu packages machine-learning)
   #:use-module (gnu packages man)
@@ -277,3 +279,116 @@ Python-based implementation efficiently deals with datasets of more than one
 million cells.")
     (license license:bsd-3)))
 
+
+(define-public python-interlap
+  (package
+  (name "python-interlap")
+  (version "0.2.7")
+  (source
+    (origin
+      (method url-fetch)
+      (uri (pypi-uri "interlap" version))
+      (sha256
+        (base32
+          "1jbfh00bkrf0i5psa6n75rlgmqp5389xixa9j29w8rxhah6g7r1i"))))
+  (build-system python-build-system)
+  (home-page "http://brentp.github.io/interlap")
+  (synopsis
+    "interlap: fast, simple interval overlap testing")
+  (description
+    "interlap: fast, simple interval overlap testing")
+  (license license:expat)))
+
+
+(define-public parasail
+  (package
+   (name "parasail")
+   (version "2.4.3")
+   (source
+    (origin
+     (method git-fetch)
+     (uri (git-reference
+           (url "https://github.com/jeffdaily/parasail/")
+           (commit (string-append "v" version))))
+     (file-name (git-file-name name version))
+     (sha256
+      (base32 "0lmdcvrfipmm41bbkqirf06yf9szikxvhcgl9iwrb8vqjzszfjrj"))))
+   (home-page "https://github.com/jeffdaily/parasail")
+   (build-system gnu-build-system)
+   (native-inputs
+    `(("autoconf" ,autoconf)
+      ("automake" ,automake)
+      ("libtool" ,libtool)))
+   (inputs
+    `(("libomp" ,libomp)
+      ("zlib" ,zlib)))
+   (synopsis "Pairwise Sequence Alignment Library")
+   (description "parasail is a SIMD C (C99) library containing implementations of the Smith-Waterman (local), Needleman-Wunsch (global), and various semi-global pairwise sequence alignment algorithms. Here, semi-global means insertions before the start or after the end of either the query or target sequence are optionally not penalized. parasail implements most known algorithms for vectorized pairwise sequence alignment, including diagonal [Wozniak, 1997], blocked [Rognes and Seeberg, 2000], striped [Farrar, 2007], and prefix scan [Daily, 2015]. Therefore, parasail is a reference implementation for these algorithms in addition to providing an implementation of the best-performing algorithm(s) to date on today's most advanced CPUs.")
+   (license license:bsd-3)))
+
+(define-public python-parasail
+  (package
+  (name "python-parasail")
+  (version "1.2.4")
+  (source
+    (origin
+      (method url-fetch)
+      (uri (pypi-uri "parasail" version))
+      (sha256
+        (base32
+          "1lpaxw99szwws65k63l8rvd14sawfqi13dyb6ys1nijaj9i0fvlf"))))
+  (build-system python-build-system)
+  (arguments
+   `(#:phases
+       (modify-phases %standard-phases
+         (add-before 'build 'skip-parasail-download
+           (lambda* (#:key inputs #:allow-other-keys)
+             (let* ((parasail (assoc-ref inputs "parasail"))
+                    (lib (string-append parasail "/" "lib" "/" "libparasail.so"))
+                    (dest "parasail/libparasail.so"))
+             (setenv "PARASAIL_SKIP_BUILD" "1")))))))
+  (propagated-inputs
+   `(("python-numpy" ,python-numpy)
+     ("parasail" ,parasail)))
+  (home-page
+    "https://github.com/jeffdaily/parasail-python")
+  (synopsis "pairwise sequence alignment library")
+  (description
+    "pairwise sequence alignment library")
+  (license license:bsd-3)))
+
+(define-public python-liftoff
+  (package
+   (name "python-liftoff")
+   (version "1.6.1")
+   (source
+    (origin
+     (method url-fetch)
+     (uri (pypi-uri "Liftoff" version))
+     (sha256
+      (base32
+       "0lahmwl7r7axn321hkiwprcalhgfdfchavkg9p1azgkd36sa6n1w"))
+     (patches
+      (parameterize
+          ((%patch-path
+            (map (lambda (directory)
+                   (string-append directory "/detrout/packages/patches"))
+                 %load-path)))
+      (search-patches "liftoff-permissive-requires.patch")))))
+   (build-system python-build-system)
+;;   (arguments
+;;    `(#:tests? #f))
+   (propagated-inputs
+    `(("python-biopython" ,python-biopython)
+      ("python-gffutils" ,python-gffutils)
+      ("python-interlap" ,python-interlap)
+      ("python-networkx" ,python-networkx)
+      ("python-numpy" ,python-numpy)
+      ("python-parasail" ,python-parasail)
+      ("python-pyfaidx" ,python-pyfaidx)
+      ("python-pysam" ,python-pysam)
+      ("python-ujson" ,python-ujson)))
+   (home-page "https://github.com/ashumate/Liftoff")
+   (synopsis "A gene annotation mapping tool")
+   (description "A gene annotation mapping tool")
+   (license license:gpl3)))
