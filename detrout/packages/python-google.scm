@@ -20,27 +20,6 @@
   #:use-module (srfi srfi-1))
 
 
-;; Not really google provided but I don't feel like making another
-;; file right now
-
-(define-public python-cachetools
-  (package
-   (name "python-cachetools")
-   (version "4.2.2")
-   (source
-    (origin
-     (method url-fetch)
-     (uri (pypi-uri "cachetools" version))
-     (sha256
-      (base32
-       "1zqc098gk6y614lxwqd9z2gm8lldgvrpid133pnlm4m048gfvdb1"))))
-   (build-system python-build-system)
-   (home-page "https://github.com/tkem/cachetools/")
-   (synopsis "Collection of memoizing collections and decorators")
-   (description
-    "This module provides various memoizing collections and decorators, including variants of the Python Standard Library’s @lru_cache function decorator.")
-   (license license:expat)))
-
 (define-public python-pyu2f
   (package
    (name "python-pyu2f")
