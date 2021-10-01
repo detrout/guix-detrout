@@ -12,6 +12,7 @@
   #:use-module (guix build-system trivial)
   #:use-module (gnu packages compression)
   #:use-module (gnu packages)
+  #:use-module (gnu packages augeas)
   #:use-module (gnu packages bash)
   #:use-module (gnu packages check)
   #:use-module (gnu packages curl)
@@ -34,8 +35,29 @@
   #:use-module (gnu packages sphinx)
   #:use-module (gnu packages texinfo)
   #:use-module (gnu packages time)
+  #:use-module (gnu packages tls)
   #:use-module (gnu packages base)
   #:use-module (srfi srfi-1))
+
+(define-public python-augeas
+  (package
+    (name "python-augeas")
+    (version "1.1.0")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (pypi-uri "python-augeas" version))
+       (sha256
+        (base32
+         "131vzy7bnnqdglz6hd79zkkdqfbyz0rxhwsz0mbzq3xlhsga952i"))))
+    (build-system python-build-system)
+    (propagated-inputs
+     `(("python-cffi" ,python-cffi)
+       ("augeas" ,augeas)))
+    (home-page "http://augeas.net/")
+    (synopsis "Python bindings for Augeas")
+    (description "Python bindings for Augeas")
+    (license license:lgpl2.1)))
 
 (define-public python-certbot-apache
   (package
@@ -55,6 +77,7 @@
        ("python-pytest" ,python-pytest)))
     (propagated-inputs
      `(("python-acme" ,python-acme)
+       ("python-augeas" ,python-augeas)
        ("python-configargparse" ,python-configargparse)
        ("python-pyrfc3339" ,python-pyrfc3339)
        ("python-pyopenssl" ,python-pyopenssl)
