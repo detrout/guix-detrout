@@ -8,13 +8,35 @@
   #:use-module (gnu packages)
   #:use-module (gnu packages crates-io)
   #:use-module (gnu packages crates-gtk)
+  #:use-module (gnu packages pkg-config)
   #:use-module (gnu packages rust)
+  #:use-module (gnu packages tls)
   )
 
-(define-public rust-tungstenite-0.14
+
+(define-public rust-input-buffer-0.4
+  (package
+    (inherit rust-input-buffer-0.3)
+    (name "rust-input-buffer")
+    (version "0.4.0")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (crate-uri "input_buffer" version))
+       (file-name (string-append name "-" version ".tar.gz"))
+       (sha256
+        (base32 "04yl6pdjawq5grl946hn3imfs2cx0r0vrc0jvdyim3s4bybnfygr"))))
+    (build-system cargo-build-system)
+    (arguments
+     `(#:skip-build? #t
+       #:cargo-inputs
+       (("rust-bytes" ,rust-bytes-1))))))
+
+
+(define-public rust-tungstenite-0.12
   (package
     (name "rust-tungstenite")
-    (version "0.14.0")
+    (version "0.12.0")
     (source
       (origin
         (method url-fetch)
@@ -23,27 +45,34 @@
           (string-append name "-" version ".tar.gz"))
         (sha256
           (base32
-            "1db5j4792b197v95y7hr8j9n0qn75rdc1xcd19mjfbmxi9axicm0"))))
+           ;; v15 hash "1db5j4792b197v95y7hr8j9n0qn75rdc1xcd19mjfbmxi9axicm0"
+           "093wzyi1405j9r4qdvrpkzmpnh4z18jr67amkbx7426px2bq5nla"))))
     (build-system cargo-build-system)
     (arguments
-      `(#:skip-build?
-        #t
-        #:cargo-inputs
+      `(#:cargo-inputs
         (("rust-base64" ,rust-base64-0.13)
          ("rust-byteorder" ,rust-byteorder-1)
          ("rust-bytes" ,rust-bytes-1)
          ("rust-http" ,rust-http-0.2)
          ("rust-httparse" ,rust-httparse-1)
+         ("rust-input-buffer" ,rust-input-buffer-0.4)
          ("rust-log" ,rust-log-0.4)
          ("rust-native-tls" ,rust-native-tls-0.2)
          ("rust-rand" ,rust-rand-0.8)
-         ("rust-rustls" ,rust-rustls-0.19)
-         ("rust-rustls-native-certs" ,rust-rustls-native-certs-0.5)
+         ;;("rust-rustls" ,rust-rustls-0.19)
+         ;;("rust-rustls-native-certs" ,rust-rustls-native-certs-0.5)
          ("rust-sha-1" ,rust-sha-1-0.9)
          ("rust-thiserror" ,rust-thiserror-1)
          ("rust-url" ,rust-url-2)
          ("rust-utf-8" ,rust-utf-8-0.7)
-         ("rust-webpki" ,rust-webpki-0.21))))
+         ("rust-webpki" ,rust-webpki-0.21))
+        #:cargo-development-inputs
+        (("rust-criterion" ,rust-criterion-0.3)
+         ("rust-env-logger" ,rust-env-logger-0.8)
+         ("rust-net2" ,rust-net2-0.2))))
+    (native-inputs
+     `(("pkg-config" ,pkg-config)
+       ("openssl" ,openssl-1.0)))
     (home-page
       "https://github.com/snapview/tungstenite-rs")
     (synopsis
