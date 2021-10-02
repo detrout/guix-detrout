@@ -81,10 +81,10 @@
       "Lightweight stream-based WebSocket implementation")
     (license (list license:expat license:asl2.0))))
 
-(define-public rust-tokio-tungstenite-0.15
+(define-public rust-tokio-tungstenite-0.13
   (package
     (name "rust-tokio-tungstenite")
-    (version "0.15.0")
+    (version "0.13.0")
     (source
       (origin
         (method url-fetch)
@@ -93,7 +93,8 @@
           (string-append name "-" version ".tar.gz"))
         (sha256
           (base32
-            "1n6b8qgjgnxl5g1fwmsfcgmshpv814yhqja56nc9h75gbkwf67ai"))))
+           ;; 15 "1n6b8qgjgnxl5g1fwmsfcgmshpv814yhqja56nc9h75gbkwf67ai"
+           "06w65px7rd6jn6h0qs1djia8xnhgi5hbrv0p23m7gl5ry5sz99g1" ))))
     (build-system cargo-build-system)
     (arguments
       `(#:cargo-inputs
@@ -106,7 +107,7 @@
          ("rust-tokio-native-tls"
           ,rust-tokio-native-tls-0.3)
          ("rust-tokio-rustls" ,rust-tokio-rustls-0.22)
-         ("rust-tungstenite" ,rust-tungstenite-0.14)
+         ("rust-tungstenite" ,rust-tungstenite-0.12)
          ("rust-webpki" ,rust-webpki-0.21)
          ("rust-webpki-roots" ,rust-webpki-roots-0.21))
         #:cargo-development-inputs
@@ -630,8 +631,8 @@ WIP
         ("rust-tokio-native-tls" ,rust-tokio-native-tls-0.3)
         ("rust-native-tls" ,rust-native-tls-0.2)
         ("rust-mumble-protocol" ,rust-mumble-protocol-0.4)
-        ("rust-tokio-tungstenite" ,rust-tokio-tungstenite-0.15) ;; should be 0.13
-        ("rust-tungstenite" ,rust-tungstenite-0.14)
+        ("rust-tokio-tungstenite" ,rust-tokio-tungstenite-0.13) ;; should be 0.13
+        ("rust-tungstenite" ,rust-tungstenite-0.12)
         ("rust-http", rust-http-0.2)
         ("rust-rtp" ,rust-rtp-0.1)
         ("rust-libnice" ,rust-libnice-0.3)
