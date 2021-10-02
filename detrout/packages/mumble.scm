@@ -38,8 +38,7 @@
          ("rust-native-tls" ,rust-native-tls-0.2)
          ("rust-rand" ,rust-rand-0.8)
          ("rust-rustls" ,rust-rustls-0.19)
-         ("rust-rustls-native-certs"
-          ,rust-rustls-native-certs-0.5)
+         ("rust-rustls-native-certs" ,rust-rustls-native-certs-0.5)
          ("rust-sha-1" ,rust-sha-1-0.9)
          ("rust-thiserror" ,rust-thiserror-1)
          ("rust-url" ,rust-url-2)
