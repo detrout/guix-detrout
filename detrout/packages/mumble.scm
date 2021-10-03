@@ -545,9 +545,7 @@ WIP
             "0yb5d05vbx86bbhqy5zdwbasqk1b8khk2d4sgfglnzms42195yh7"))))
     (build-system cargo-build-system)
     (arguments
-      `(#:skip-build?
-        #t
-        #:cargo-inputs
+      `(#:cargo-inputs
         (("rust-bindgen" ,rust-bindgen-0.56)
          ("rust-gio-sys" ,rust-gio-sys-0.10)
          ("rust-glib-sys" ,rust-glib-sys-0.10)
