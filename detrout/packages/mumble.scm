@@ -342,7 +342,7 @@ WIP
 
 (define-public rust-trackable-0.1
   (package
-    (name "rust-trackable-0.1")
+    (name "rust-trackable")
     (version "0.1.8")
     (source
       (origin
