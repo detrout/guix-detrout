@@ -8,6 +8,7 @@
   #:use-module (gnu packages)
   #:use-module (gnu packages crates-io)
   #:use-module (gnu packages crates-gtk)
+  #:use-module (gnu packages glib)
   #:use-module (gnu packages pkg-config)
   #:use-module (gnu packages rust)
   #:use-module (gnu packages tls)
@@ -582,9 +583,14 @@ WIP
          ("rust-gobject-sys" ,rust-gobject-sys-0.10)
          ("rust-libc" ,rust-libc-0.2)
          ("rust-libnice-sys" ,rust-libnice-sys-0.4)
+         ("rust-pkg-config" ,rust-pkg-config-0.3)
          ("rust-webrtc-sdp" ,rust-webrtc-sdp-0.3))
         #:cargo-development-inputs
         (("rust-tokio" ,rust-tokio-1))))
+    (native-inputs
+     `(("pkg-config" ,pkg-config)))
+    (inputs
+     `(("glib" ,glib)))
     (home-page
       "https://github.com/johni0702/rust-libnice")
     (synopsis
