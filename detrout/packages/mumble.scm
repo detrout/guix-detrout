@@ -357,7 +357,7 @@ WIP
     (build-system cargo-build-system)
     (arguments
       `(#:cargo-development-inputs
-        ("rust-rand" ,rust-rand-0.3)))
+        (("rust-rand" ,rust-rand-0.3))))
     (home-page "https://github.com/sile/trackable")
     (synopsis
       "This library provides a way to track objects manually as an alternative to mechanisms like backtracing")
