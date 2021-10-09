@@ -3,6 +3,7 @@
   #:use-module (guix gexp)
   #:use-module (guix records)
   #:use-module (ice-9 format)
+  #:use-module (ice-9 match)
   #:use-module (srfi srfi-9))
 
 (define dc-package-version "4.94.2-7")
@@ -2355,3 +2356,46 @@ PASSWDLINE=${sg{\\
 
 (define (generate-exim-config port config)
   (generate-config #f config main))
+
+
+(define (dc-exim-computed-config-file package config)
+  (computed-file "exim.conf"
+                 #~(call-with-output-file #$output
+                     (lambda (port)
+                       (generate-eximconfig prot config)))))
+
+
+(define dc-exim-shepherd-service
+  (match-lambda
+   (($ <dc-exim-configuration> configtype
+                               hostname
+                               other-hostnames
+                               local-interface
+                               readhost
+                               relay-domains
+                               minimaldns
+                               relay-nets
+                               smarthost
+                               hide-mailname
+                               package)
+     (list (shepherd-service
+            (provision '(exim mta))
+            (documentation "Run the exim daemon with Debian like configuration file.")
+            (requirement '(networking))
+            (start #~(make-forkexec-constructor
+                      '(#$(file-append package "/bin/exim")
+                        "-bd" "-v" "-C"
+                        #$(dc-exim-computed-config-file package config-file))))
+            (stop #~(make-kill-destructor)))))))
+
+
+(define dc-exim-service-type
+  (service-type
+   (name 'dc-exim)
+   (extensions
+    (list (service-extension shepherd-root-service-type dc-exim-shepherd-service)
+          (service-extension account-service-type (const %exim-accounts))
+          (service-extension activation-service-type exim-activation)
+          (service-extension profile-service-type exim-profile)
+          (service-extension mail-aliases-service-type (const '()))))))
+
