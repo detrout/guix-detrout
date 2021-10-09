@@ -2353,4 +2353,5 @@ PASSWDLINE=${sg{\\
 ;   (hide-mailname #t)
 ;   (localdelivery 'maildir-home)))
 
-(generate-config #f test-config main)
+(define (generate-exim-config port config)
+  (generate-config #f config main))
