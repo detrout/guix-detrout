@@ -2,6 +2,7 @@
   #:use-module (gnu packages mail)
   #:use-module (gnu services)
   #:use-module (gnu services base)
+  #:use-module (gnu services mail)
   #:use-module (gnu services shepherd)
   #:use-module (gnu system shadow)
   #:use-module (guix gexp)
