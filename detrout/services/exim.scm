@@ -1,6 +1,7 @@
 (define-module (detrout services exim)
   #:use-module (gnu packages mail)
   #:use-module (gnu services)
+  #:use-module (gnu services shepherd)
   #:use-module (guix gexp)
   #:use-module (guix records)
   #:use-module (ice-9 format)
