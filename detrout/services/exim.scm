@@ -2394,13 +2394,44 @@ PASSWDLINE=${sg{\\
             (stop #~(make-kill-destructor)))))))
 
 
+(define %dc-exim-accounts
+  (list (user-group
+         (name "exim")
+         (system? #t))
+        (user-account
+         (name "exim")
+         (group "exim")
+         (system? #t)
+         (comment "Exim Daemon")
+         (home-directory "/var/empty")
+         (shell (file-append shadow "/sbin/nologin")))))
+
+(define dc-exim-activation
+  (match-lambda
+    (($ <exim-configuration> package config-file)
+     (with-imported-modules '((guix build utils))
+       #~(begin
+           (use-modules (guix build utils))
+
+           (let ((uid (passwd:uid (getpw "exim")))
+                 (gid (group:gid (getgr "exim"))))
+             (mkdir-p "/var/spool/exim")
+             (chown "/var/spool/exim" uid gid))
+
+           (zero? (system* #$(file-append package "/bin/exim")
+                           "-bV" "-C" #$(exim-computed-config-file package config-file))))))))
+
+(define dc-exim-profile
+  (compose list dc-exim-package))
+
+
 (define dc-exim-service-type
   (service-type
    (name 'dc-exim)
    (extensions
     (list (service-extension shepherd-root-service-type dc-exim-shepherd-service)
-          (service-extension account-service-type (const %exim-accounts))
-          (service-extension activation-service-type exim-activation)
-          (service-extension profile-service-type exim-profile)
+          (service-extension account-service-type (const %dc-exim-accounts))
+          (service-extension activation-service-type dc-exim-activation)
+          (service-extension profile-service-type dc-exim-profile)
           (service-extension mail-aliases-service-type (const '()))))))
 
