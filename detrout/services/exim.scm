@@ -1,4 +1,5 @@
 (define-module (detrout services exim)
+  #:use-module (gnu packages mail)
   #:use-module (guix gexp)
   #:use-module (guix records)
   #:use-module (ice-9 format)
@@ -67,7 +68,7 @@ CHECK_RCPT_SPF=true
 CHECK_RCPT_VERIFY_SENDER=true
 #CHECK_RCPT_LOCAL_ACL_FILE=$CONFIDIR/acl.local
 IGNORE_SMTP_LINE_LENGTH_LIMIT=true
-" (dc-exim-hostname config))
+" (dc-exim-hostname config)))
 
 
 (define (main-exim-config-listmacrosdef port config)
@@ -184,8 +185,6 @@ MAIN_LOG_SELECTOR = +smtp_protocol_error +smtp_syntax_error +tls_certificate_ver
           (dc-exim-smarthost config)      ;; DCsmarthost)
           (dc-exim-configtype config)     ;; DC_eximconfig_configtype
           ))
-
-
 
 
 (define (main-exim-config-options port config)
@@ -2355,5 +2354,3 @@ PASSWDLINE=${sg{\\
 ;   (localdelivery 'maildir-home)))
 
 (generate-config #f test-config main)
-
-
