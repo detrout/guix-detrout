@@ -1,6 +1,6 @@
 (define-module (detrout services exim)
+  #:use-module (gnu packages admin)
   #:use-module (gnu packages mail)
-  #:use-module (gnu packages shadow)
   #:use-module (gnu services)
   #:use-module (gnu services base)
   #:use-module (gnu services mail)
