@@ -10,7 +10,10 @@
   #:use-module (guix records)
   #:use-module (ice-9 format)
   #:use-module (ice-9 match)
-  #:use-module (srfi srfi-9))
+  #:use-module (srfi srfi-9)
+  #:export (dc-exim-config
+            dc-exim-config?
+            dc-exim-service-type))
 
 (define dc-package-version "4.94.2-7")
 
