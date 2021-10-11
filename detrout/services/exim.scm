@@ -2352,14 +2352,14 @@ PASSWDLINE=${sg{\\
   (cond ((null? sections) #f)
         (else (begin
                 (display ((car sections) port config))
-                (generate-config port test-config (cdr sections))))))
+                (generate-config port config (cdr sections))))))
 
 
 (define (generate-exim-config port config)
   (generate-config #f config main))
 
 
-(define (dc-exim-computed-config-file package config)
+(define (dc-exim-computed-config-file config)
   (computed-file "exim.conf"
                  #~(call-with-output-file #$output
                      (lambda (port)
@@ -2386,7 +2386,20 @@ PASSWDLINE=${sg{\\
             (start #~(make-forkexec-constructor
                       '(#$(file-append package "/bin/exim")
                         "-bd" "-v" "-C"
-                        #$(dc-exim-computed-config-file package config-file))))
+                        #$(dc-exim-computed-config-file
+                           (make-dc-exim-configuration configtype
+                                                       hostname
+                                                       other-hostnames
+                                                       local-interface
+                                                       readhost
+                                                       relay-domains
+                                                       minimaldns
+                                                       relay-nets
+                                                       smarthost
+                                                       hide-mailname
+                                                       localdelivery
+                                                       package))
+                        )))
             (stop #~(make-kill-destructor)))))))
 
 
@@ -2404,7 +2417,18 @@ PASSWDLINE=${sg{\\
 
 (define dc-exim-activation
   (match-lambda
-    (($ <exim-configuration> package config-file)
+   (($ <dc-exim-configuration> configtype
+                               hostname
+                               other-hostnames
+                               local-interface
+                               readhost
+                               relay-domains
+                               minimaldns
+                               relay-nets
+                               smarthost
+                               hide-mailname
+                               localdelivery
+                               package)
      (with-imported-modules '((guix build utils))
        #~(begin
            (use-modules (guix build utils))
@@ -2415,7 +2439,20 @@ PASSWDLINE=${sg{\\
              (chown "/var/spool/exim" uid gid))
 
            (zero? (system* #$(file-append package "/bin/exim")
-                           "-bV" "-C" #$(exim-computed-config-file package config-file))))))))
+                           "-bV" "-C" #$(dc-exim-computed-config-file
+                                         (make-dc-exim-configuration configtype
+                                                                     hostname
+                                                                     other-hostnames
+                                                                     local-interface
+                                                                     readhost
+                                                                     relay-domains
+                                                                     minimaldns
+                                                                     relay-nets
+                                                                     smarthost
+                                                                     hide-mailname
+                                                                     localdelivery
+                                                                     package)))))))))
+
 
 (define dc-exim-profile
   (compose list dc-exim-package))
