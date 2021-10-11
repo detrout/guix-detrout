@@ -2355,15 +2355,6 @@ PASSWDLINE=${sg{\\
                 (generate-config port test-config (cdr sections))))))
 
 
-;(define test-config
-;  (dc-exim-config
-;   (configtype 'satellite)
-;   (hostname ".ghic.org")
-;   (readhost "ghic.org")
-;   (smarthost "chaos.caltech.edu:587")
-;   (hide-mailname #t)
-;   (localdelivery 'maildir-home)))
-
 (define (generate-exim-config port config)
   (generate-config #f config main))
 
@@ -2440,4 +2431,17 @@ PASSWDLINE=${sg{\\
           (service-extension activation-service-type dc-exim-activation)
           (service-extension profile-service-type dc-exim-profile)
           (service-extension mail-aliases-service-type (const '()))))))
+
+
+
+(define (test-main)
+  (let ((test-config
+         (dc-exim-configuration
+          (configtype 'satellite)
+          (hostname ".ghic.org")
+          (readhost "ghic.org")
+          (smarthost "chaos.caltech.edu:587")
+          (hide-mailname #t)
+          (localdelivery 'maildir-home))))
+    (generate-exim-config #f test-config)))
 
