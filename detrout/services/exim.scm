@@ -52,11 +52,11 @@ exim_path = ~a
 # Macro defining the main configuration directory.
 # We do not use absolute paths.
 .ifndef CONFDIR
-CONFDIR = $~
+CONFDIR = ~a
 .endif
 
-" (file-append package "bin/exim")
-  (file-append package "etc")))
+" (file-append (dc-exim-package config) "bin/exim")
+  (file-append (dc-exim-package config) "etc")))
 
 
 (define (main-local-macros port config)
