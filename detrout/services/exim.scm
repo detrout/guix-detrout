@@ -2363,7 +2363,7 @@ PASSWDLINE=${sg{\\
   (computed-file "exim.conf"
                  #~(call-with-output-file #$output
                      (lambda (port)
-                       (generate-eximconfig prot config)))))
+                       (generate-exim-config prot config)))))
 
 
 (define dc-exim-shepherd-service
