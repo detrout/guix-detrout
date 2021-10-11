@@ -11,15 +11,15 @@
   #:use-module (ice-9 format)
   #:use-module (ice-9 match)
   #:use-module (srfi srfi-9)
-  #:export (dc-exim-config
-            dc-exim-config?
+  #:export (dc-exim-configuration
+            dc-exim-configuration?
             dc-exim-service-type))
 
 (define dc-package-version "4.94.2-7")
 
-(define-record-type* <dc-exim-config> dc-exim-config
-  make-dc-exim-config
-  dc-exim-config?
+(define-record-type* <dc-exim-configuration> dc-exim-configuration
+  make-dc-exim-configuration
+  dc-exim-configuration?
   (configtype       dc-exim-configtype       (default 'local))
   (hostname         dc-exim-hostname         (default "localhost"))
   (other-hostnames  dc-exim-other-hostnames  (default '()))
