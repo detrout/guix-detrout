@@ -2378,6 +2378,7 @@ PASSWDLINE=${sg{\\
                                relay-nets
                                smarthost
                                hide-mailname
+                               localdelivery
                                package)
      (list (shepherd-service
             (provision '(exim mta))
