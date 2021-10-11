@@ -2432,6 +2432,7 @@ PASSWDLINE=${sg{\\
 (define dc-exim-service-type
   (service-type
    (name 'dc-exim)
+   (description "Run exim with debian like settings")
    (extensions
     (list (service-extension shepherd-root-service-type dc-exim-shepherd-service)
           (service-extension account-service-type (const %dc-exim-accounts))
