@@ -78,7 +78,8 @@ CHECK_RCPT_SPF=true
 CHECK_RCPT_VERIFY_SENDER=true
 #CHECK_RCPT_LOCAL_ACL_FILE=$CONFIDIR/acl.local
 IGNORE_SMTP_LINE_LENGTH_LIMIT=true
-" (dc-exim-hostname config)))
+" (dc-exim-hostname config)
+  (dc-exim-hostname config)))
 
 
 (define (main-exim-config-listmacrosdef port config)
