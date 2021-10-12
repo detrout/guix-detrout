@@ -1111,7 +1111,14 @@ acl_check_data:
   # skip scanning for authenticated users (if desired?)
   accept authenticated = *
 
-  # scan the message with rspamd
+  # accept otherwise
+  accept
+
+"))
+
+
+(define (router-exim-rspamd port config)
+  (format port "  # scan the message with rspamd
   warn spam = nobody:true
   # This will set variables as follows:
   # $spam_action is the action recommended by rspamd
@@ -1154,11 +1161,6 @@ acl_check_data:
   .ifdef CHECK_DATA_LOCAL_ACL_FILE
   .include CHECK_DATA_LOCAL_ACL_FILE
   .endif
-
-
-  # accept otherwise
-  accept
-
 "))
 
 
