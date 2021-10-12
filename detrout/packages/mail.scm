@@ -1,4 +1,4 @@
-(define-module (gnu packages mail)
+(define-module (detrout packages mail)
   #:use-module (guix utils)
   #:use-module (gnu packages)
   #:use-module (gnu packages compression)
