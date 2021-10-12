@@ -2358,7 +2358,7 @@ PASSWDLINE=${sg{\\
 
 
 (define (generate-exim-config port config)
-  (generate-config #f config main))
+  (generate-config port config main))
 
 
 (define (dc-exim-computed-config-file config)
