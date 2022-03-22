@@ -388,7 +388,7 @@ WIP
          ))))
     (build-system cargo-build-system)
     (arguments
-     `(#:rust ,rust-1.52
+     `(#:rust ,rust
        #:cargo-inputs
        (("rust-trackable"  ,rust-trackable-0.1)
         ("rust-handy-async" ,rust-handy-async-0.2)
