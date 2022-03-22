@@ -622,7 +622,7 @@ WIP
 ;;           "0l194xida852088l8gv7v2ygjxif46fhzp18dvv19i7wssgq8jkf"))))
     (build-system cargo-build-system)
     (arguments
-     `(#:rust ,rust-1.52
+     `(#:rust ,rust
        #:cargo-inputs
        (("rust-argparse" ,rust-argparse-0.2)
         ("rust-bytes" ,rust-bytes-1)
