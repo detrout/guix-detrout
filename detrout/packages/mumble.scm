@@ -73,7 +73,7 @@
          ("rust-net2" ,rust-net2-0.2))))
     (native-inputs
      `(("pkg-config" ,pkg-config)
-       ("openssl" ,openssl@1.1.1l)))
+       ("openssl" ,openssl)))
     (home-page
       "https://github.com/snapview/tungstenite-rs")
     (synopsis
