@@ -96,7 +96,7 @@ d sending commands.")
                (base32 "1xwxd5rsdm2na20b3l6qikwx6pc35b2rcshl342whfh9cbpssqh6"))))
     (build-system gnu-build-system)
     (native-inputs
-     `(("scons-python2" ,scons-with-python2)
+     `(("scons-python2" ,scons-python2)
        ("python2" ,python-2)))
     (inputs
      `(("boost" ,boost)
