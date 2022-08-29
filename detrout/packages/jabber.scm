@@ -97,7 +97,7 @@ d sending commands.")
     (build-system gnu-build-system)
     (native-inputs
      `(("scons" ,scons)
-       ("python2" ,python2)))
+       ("python2" ,python-2)))
     (inputs
      `(("boost" ,boost)
        ("expat" ,expat)
