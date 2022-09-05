@@ -44,6 +44,7 @@
   #:use-module (guix build-system python)
   #:use-module (guix build-system trivial)
   #:use-module (detrout packages compression)
+  #:use-module (detrout packages networking)
   #:use-module (detrout packages python-xyz)
   #:use-module (srfi srfi-1))
 
@@ -589,7 +590,6 @@
     (description "Bidirectional communication for the HoloViz ecosystem.")
     (license license:bsd-3)))
 
-
 (define-public python-streamz
   (package
     (name "python-streamz")
@@ -603,7 +603,16 @@
     (build-system python-build-system)
     (propagated-inputs (list python-setuptools python-six python-toolz
                              python-tornado python-zict))
+    (native-inputs
+     (list python-confluent-kafka
+           python-dask
+           python-distributed
+           python-flaky
+           python-networkx
+           python-pytest))
     (home-page "http://github.com/python-streamz/streamz/")
-    (synopsis "Streams")
-    (description "Streams")
+    (synopsis "Streamz helps you build pipelines to manage continuous streams of data")
+    (description "Streamz helps you build pipelines to manage continuous streams of data. It is simple to use in simple cases, but also supports complex pipelines that involve branching, joining, flow control, feedback, back pressure, and so on.
+
+Optionally, Streamz can also work with both Pandas and cuDF dataframes, to provide sensible streaming operations on continuous tabular data.")
     (license license:bsd-3)))
