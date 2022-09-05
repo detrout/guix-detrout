@@ -612,15 +612,17 @@
                (base32
                 "1wrljqy6wk10cka8g6c19139a0ay21r5f2al870qki1f9j8dcxsm"))))
     (build-system python-build-system)
-    (propagated-inputs (list python-setuptools python-six python-toolz
+    (propagated-inputs (list python-six python-toolz
                              python-tornado python-zict))
     (native-inputs
-     (list python-confluent-kafka
+     (list python-cython
+           python-confluent-kafka
            python-dask
            python-distributed
            python-flaky
            python-networkx
-           python-pytest))
+           python-pytest
+           python-setuptools))
     (home-page "http://github.com/python-streamz/streamz/")
     (synopsis "Streamz helps you build pipelines to manage continuous streams of data")
     (description "Streamz helps you build pipelines to manage continuous streams of data. It is simple to use in simple cases, but also supports complex pipelines that involve branching, joining, flow control, feedback, back pressure, and so on.
