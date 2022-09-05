@@ -533,6 +533,7 @@
                (base32
                 "07821yabrqjyg0z45xlm4vz4hgm4gs7p7mqa3hi5ryh1qhnn2f32"))))
     (build-system python-build-system)
+    (native-inputs (list git python-pytest python-requests-mock))
     (propagated-inputs (list python-requests))
     (home-page "https://github.com/percy/python-percy-client")
     (synopsis
