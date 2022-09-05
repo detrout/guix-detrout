@@ -57,6 +57,16 @@
                (base32
                 "1nzkzhnpvqk1jz2h7hy8yhi7hgxc49n9kwi96xh1ma3sd8s25i91"))))
     (build-system python-build-system)
+    (arguments
+     `(#:tests? #f
+       #:phases
+       ; only import test directory, colorcet.plotting module has
+       ; a circular dependency on holoviews
+       (modify-phases %standard-phases
+         (replace 'check
+           (lambda* (#:key tests? #:allow-other-keys)
+             (when tests?
+               (invoke "pytest" "colorcet.tests")))))))
     (propagated-inputs (list python-param python-pyct))
     (native-inputs (list python-flake8
                          python-keyring
