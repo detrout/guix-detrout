@@ -291,6 +291,15 @@
                (base32
                 "10ypax7d9wz45mjv705h8pg3ahhlcf83l94a8v0h7w1w1ilylmi3"))))
     (build-system python-build-system)
+    (arguments
+     `(#:tests? #f
+       #:phases
+       (modify-phases %standard-phases
+         (replace 'check
+           (lambda* (#:key tests? #:allow-other-keys)
+             (when tests?
+               (invoke "pytest" "datashape")))))))
+    (native-inputs (list python-pytest))
     (propagated-inputs (list python-dateutil python-multipledispatch
                              python-numpy))
     (home-page "http://datashape.readthedocs.org/en/latest/")
