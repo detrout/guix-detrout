@@ -70,40 +70,41 @@
     (synopsis "Collection of perceptually uniform colormaps")
     (description "Collection of perceptually uniform colormaps")
     (license license:cc-by4.0)))
-(define-public python-cudf
-  (package
-    (name "python-cudf")
-    (version "0.6.1.post1")
-    (source (origin
-              (method url-fetch)
-              (uri (pypi-uri "cudf" version))
-              (sha256
-               (base32
-                "0rhfp97syvi8vgvc2045nph6brcmabn8s3b3h0kp6a4s7a98pmb2"))))
-    (build-system python-build-system)
-    (home-page "https://github.com/rapidsai/dask-cuda")
-    (synopsis "")
-    (description "")
-    (license license:asl2.0)))
-
-(define-public python-cupy
-  (package
-    (name "python-cupy")
-    (version "11.1.0")
-    (source (origin
-              (method url-fetch)
-              (uri (pypi-uri "cupy" version))
-              (sha256
-               (base32
-                "1pafd2jga7ba439hsq7qaw44s22imngl5bq5163vvmyx1acnyfz1"))))
-    (build-system python-build-system)
-    (propagated-inputs (list python-fastrlock python-numpy))
-    (native-inputs (list python-hypothesis python-pytest))
-    (home-page "https://cupy.dev/")
-    (synopsis "CuPy: NumPy & SciPy for GPU")
-    (description "CuPy: NumPy & SciPy for GPU")
-    (license license:expat)))
-
+; these depend on cuda which isn't available in guix
+;(define-public python-cudf
+;  (package
+;    (name "python-cudf")
+;    (version "0.6.1.post1")
+;    (source (origin
+;              (method url-fetch)
+;              (uri (pypi-uri "cudf" version))
+;              (sha256
+;               (base32
+;                "0rhfp97syvi8vgvc2045nph6brcmabn8s3b3h0kp6a4s7a98pmb2"))))
+;    (build-system python-build-system)
+;    (home-page "https://github.com/rapidsai/dask-cuda")
+;    (synopsis "")
+;    (description "")
+;    (license license:asl2.0)))
+;
+;(define-public python-cupy
+;  (package
+;    (name "python-cupy")
+;    (version "11.1.0")
+;    (source (origin
+;              (method url-fetch)
+;              (uri (pypi-uri "cupy" version))
+;              (sha256
+;               (base32
+;                "1pafd2jga7ba439hsq7qaw44s22imngl5bq5163vvmyx1acnyfz1"))))
+;    (build-system python-build-system)
+;    (propagated-inputs (list python-fastrlock python-numpy))
+;    (native-inputs (list python-hypothesis python-pytest))
+;    (home-page "https://cupy.dev/")
+;    (synopsis "CuPy: NumPy & SciPy for GPU")
+;    (description "CuPy: NumPy & SciPy for GPU")
+;    (license license:expat)))
+;
 (define-public python-dash
   (package
     (name "python-dash")
