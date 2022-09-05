@@ -490,11 +490,14 @@
     (name "python-panel")
     (version "0.13.1")
     (source (origin
-              (method url-fetch)
-              (uri (pypi-uri "panel" version))
-              (sha256
-               (base32
-                "1bqk47sisf14r0sqbihc0gcl89n6bcmxcwq2rvxwzjsim3q0i40f"))))
+      ;; theres bundled source in the pypi release
+      (method git-fetch)
+      (uri (git-reference
+            (url "https://github.com/holoviz/panel")
+            (commit (string-append "v" version))))
+      (file-name (git-file-name name version))
+      (sha256
+       (base32 "04bx9lig4j8x6q93yk11avnh8170353ach457psygvg6l5q1cvbz"))))
     (build-system python-build-system)
     (propagated-inputs (list python-bleach
                              python-bokeh
