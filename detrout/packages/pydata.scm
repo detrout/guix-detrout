@@ -520,25 +520,6 @@
   (https://percy.io).")
     (license license:expat)))
 
-(define-public python-plotly
-  (package
-    (name "python-plotly")
-    (version "5.10.0")
-    (source (origin
-              (method url-fetch)
-              (uri (pypi-uri "plotly" version))
-              (sha256
-               (base32
-                "1nzsvvcqkv2q876mgzdi5r3pln4jqbcfxpk26lkkn5bskf2xjdjd"))))
-    (build-system python-build-system)
-    (propagated-inputs (list python-tenacity))
-    (home-page "https://plotly.com/python/")
-    (synopsis
-     "An open-source, interactive data visualization library for Python")
-    (description
-     "An open-source, interactive data visualization library for Python")
-    (license license:expat)))
-
 (define-public python-pyct
   (package
     (name "python-pyct")
