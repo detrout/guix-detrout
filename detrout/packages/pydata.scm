@@ -334,8 +334,20 @@
                (base32
                 "0zic8a59a5nm5signbhx5378hvnv8iy1j53q7mpaxzrn3z2qwkj5"))))
     (build-system python-build-system)
-    (propagated-inputs (list python-cramjam python-fsspec python-numpy
-                             python-packaging python-pandas))
+    (arguments
+     `(#:phases
+       (modify-phases %standard-phases
+         (add-before 'build 'set-numpy
+           (lambda _
+             (substitute* '("setup.py")
+               (("oldest-supported-numpy") "numpy")))))))
+    (native-inputs (list python-pytest-runner python-setuptools python-wheel))
+    (propagated-inputs (list python-cramjam
+                             python-fsspec
+                             python-lzo
+                             python-numpy
+                             python-packaging
+                             python-pandas))
     (home-page "https://github.com/dask/fastparquet/")
     (synopsis "Python support for Parquet file format")
     (description "Python support for Parquet file format")
