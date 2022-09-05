@@ -44,6 +44,7 @@
   #:use-module (guix build-system python)
   #:use-module (guix build-system trivial)
   #:use-module (detrout packages compression)
+  #:use-module (detrout packages python-xyz)
   #:use-module (srfi srfi-1))
 
 (define-public python-colorcet
@@ -484,25 +485,6 @@
     (synopsis "A high level app and dashboarding solution for Python.")
     (description
      "This package provides a high level app and dashboarding solution for Python.")
-    (license license:bsd-3)))
-
-(define-public python-param
-  (package
-    (name "python-param")
-    (version "1.12.2")
-    (source (origin
-              (method url-fetch)
-              (uri (pypi-uri "param" version))
-              (sha256
-               (base32
-                "03wcf6z2n4dwvvna5kfr12m9k4c5jm2pnlfa7py5149jgxfc9k7r"))))
-    (build-system python-build-system)
-    (native-inputs (list python-flake8 python-pytest python-pytest-cov))
-    (home-page "http://param.holoviz.org/")
-    (synopsis
-     "Make your Python code clearer and more reliable by declaring Parameters.")
-    (description
-     "Make your Python code clearer and more reliable by declaring Parameters.")
     (license license:bsd-3)))
 
 (define-public python-percy
