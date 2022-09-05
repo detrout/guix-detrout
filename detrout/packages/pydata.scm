@@ -249,6 +249,7 @@
     (propagated-inputs (list python-colorcet
                              python-dask
                              python-datashape
+                             python-distributed
                              python-numba
                              python-pandas
                              python-param
@@ -276,6 +277,14 @@
 ;                         python-rioxarray
 ;                         python-spatialpandas
                          ))
+    (arguments
+     `(#:phases
+       (modify-phases %standard-phases
+         (replace 'check
+           (lambda* (#:key tests? #:allow-other-keys)
+             (when tests?
+               (invoke "pytest" "datashader"))))
+         (delete 'sanity-check))))
     (home-page "https://datashader.org")
     (synopsis "Data visualization toolchain based on aggregating into a grid")
     (description "Data visualization toolchain based on aggregating into a grid")
