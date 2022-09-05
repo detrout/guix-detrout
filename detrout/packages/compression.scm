@@ -5,6 +5,7 @@
   #:use-module (gnu packages compression)
   #:use-module (gnu packages crates-io)
   #:use-module (gnu packages python)
+  #:use-module (gnu packages python-xyz)
   #:use-module (gnu packages rust)
   #:use-module (guix build-system cargo)
   #:use-module (guix build-system python)
@@ -124,39 +125,43 @@
               (sha256
                (base32
                 "11xln8v7qg8jm01cjc9si5x9x14zliy3q9gsmx7818y6nhnhqb59"))))
-    ;;(build-system cargo-build-system)
-    ;;(native-inputs (list python))
-    (build-system python-build-system)
+    (build-system cargo-build-system)
+    ;;(build-system python-build-system)
     (native-inputs
-     (list rust-maturin-0.13))
+     (list python-black
+           python-numpy
+           python-pytest
+           python-hypothesis
+           python-wrapper
+           rust-maturin-0.13))
     (arguments
-     `(#:phases
+     `(#:cargo-inputs
+       (("rust-brotli2" ,rust-brotli2-0.3)
+        ("rust-bzip2" ,rust-bzip2-0.4)
+        ("rust-flate2" ,rust-flate2-1)
+        ("rust-lz4" ,rust-lz4-1)
+        ("rust-mimalloc" ,rust-mimalloc-0.1.24)
+        ("rust-numpy" ,rust-numpy-0.15)
+        ("rust-snap" ,rust-snap-1)
+        ("rust-zstd" ,rust-zstd-0.9))
+       #:cargo-development-inputs
+       (("rust-pyo3" ,rust-pyo3-0.15))
+       #:phases
        (modify-phases %standard-phases
          (delete 'check)
          (replace 'build
-           (lambda _
-             (invoke "maturin" "build")))
+           (lambda* (#:key inputs #:allow-other-keys)
+             (let ((python3 (search-input-file inputs "/bin/python3")))
+               (invoke "maturin" "build" "-i" python3))))
          (replace 'install
            (lambda* (#:key inputs outputs #:allow-other-keys)
-             (add-installed-pythonpath inputs outputs)
              (let ((out (assoc-ref outputs "out")))
                (for-each (lambda (wheel)
                            (format #true wheel)
                            (invoke "python" "-m" "pip" "install"
                                    wheel (string-append "--prefix=" out)))
-                         (find-files "dist" "\\.whl$"))))))))
-;    (arguments
-;     `(#:cargo-inputs
-;       (("rust-brotli2" ,rust-brotli2-0.3)
-;        ("rust-bzip2" ,rust-bzip2-0.4)
-;        ("rust-flate2" ,rust-flate2-1)
-;        ("rust-lz4" ,rust-lz4-1)
-;        ("rust-mimalloc" ,rust-mimalloc-0.1.24)
-;        ("rust-numpy" ,rust-numpy-0.15)
-;        ("rust-snap" ,rust-snap-1)
-;        ("rust-zstd" ,rust-zstd-0.9))
-;       #:cargo-development-inputs
-;       (("rust-pyo3" ,rust-pyo3-0.15))))
+                         (find-files "target" "\\.whl$")))))
+         )))
     (home-page "")
     (synopsis "Thin Python bindings to de/compression algorithms in Rust")
     (description "Thin Python bindings to de/compression algorithms in Rust")
