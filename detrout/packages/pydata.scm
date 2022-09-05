@@ -127,6 +127,14 @@
                (base32
                 "0hqnjarpsx3k5diibkqzzsifjrz5przssv9kbrl9nh9mfdd3g24c"))))
     (build-system python-build-system)
+    (arguments
+     ;; It can't find plotly, even though it's listed.
+     `(#:tests? #f
+       #:phases
+       ;; XXX: The installed scripts import packages that depend on
+       ;; this package; disable import check to avoid the cycle.
+       (modify-phases %standard-phases
+         (delete 'sanity-check))))
     (propagated-inputs (list python-contextvars
                              python-dash-core-components
                              python-dash-html-components
@@ -167,6 +175,14 @@
                (base32
                 "1vpzcc5nwg4af6rhp9izwi6g2zgfq8b8lfd1jlpmaplpmxs3hwy6"))))
     (build-system python-build-system)
+    ;; Tests have circular dependency
+    (arguments
+     `(#:tests? #f
+       #:phases
+       ;; XXX: The installed scripts import packages that depend on
+       ;; this package; disable import check to avoid the cycle.
+       (modify-phases %standard-phases
+         (delete 'sanity-check))))
     (home-page "")
     (synopsis "Core component suite for Dash")
     (description "Core component suite for Dash")
@@ -183,6 +199,13 @@
                (base32
                 "0l3fy8ax02dwrslxf7vsx6mxm9d47l5qx6chcfd620hg100sc0w7"))))
     (build-system python-build-system)
+    (arguments
+     `(#:tests? #f
+       #:phases
+       ;; XXX: The installed scripts import packages that depend on
+       ;; this package; disable import check to avoid the cycle.
+       (modify-phases %standard-phases
+         (delete 'sanity-check))))
     (home-page "https://github.com/plotly/dash-html-components")
     (synopsis "Vanilla HTML components for Dash")
     (description "Vanilla HTML components for Dash")
@@ -199,6 +222,13 @@
                (base32
                 "023kpk2p1h8qychallzi1gmafdrlb5kz39lrxkfz53jc7mllsqhq"))))
     (build-system python-build-system)
+    (arguments
+     `(#:tests? #f
+       #:phases
+       ;; XXX: The installed scripts import packages that depend on
+       ;; this package; disable import check to avoid the cycle.
+       (modify-phases %standard-phases
+         (delete 'sanity-check))))
     (home-page "")
     (synopsis "Dash table")
     (description "Dash table")
