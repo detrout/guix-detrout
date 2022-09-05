@@ -20,17 +20,19 @@
   #:use-module ((guix licenses) #:prefix license:)
   #:use-module (gnu packages)
   #:use-module (gnu packages check)
-  #:use-module (gnu packages compression)
   #:use-module (gnu packages databases)
-  #:use-module (gnu packages networking)
+  #:use-module (gnu packages geo)
+  #:use-module (gnu packages graph)
+  #:use-module (gnu packages jupyter)
   #:use-module (gnu packages pkg-config)
   #:use-module (gnu packages python)
+  #:use-module (gnu packages python-build)
   #:use-module (gnu packages python-check)
+  #:use-module (gnu packages python-compression)
   #:use-module (gnu packages python-crypto)
   #:use-module (gnu packages python-science)
   #:use-module (gnu packages python-web)
   #:use-module (gnu packages python-xyz)
-  #:use-module (gnu packages qt)
   #:use-module (gnu packages time)
   #:use-module (gnu packages xml)
   #:use-module (guix packages)
@@ -41,6 +43,7 @@
   #:use-module (guix build-system cmake)
   #:use-module (guix build-system python)
   #:use-module (guix build-system trivial)
+  #:use-module (detrout packages compression)
   #:use-module (srfi srfi-1))
 
 (define-public python-colorcet
@@ -67,23 +70,6 @@
     (synopsis "Collection of perceptually uniform colormaps")
     (description "Collection of perceptually uniform colormaps")
     (license license:cc-by4.0)))
-
-(define-public python-cramjam
-  (package
-    (name "python-cramjam")
-    (version "2.5.0")
-    (source (origin
-              (method url-fetch)
-              (uri (pypi-uri "cramjam" version))
-              (sha256
-               (base32
-                "11xln8v7qg8jm01cjc9si5x9x14zliy3q9gsmx7818y6nhnhqb59"))))
-    (build-system python-build-system)
-    (home-page "")
-    (synopsis "Thin Python bindings to de/compression algorithms in Rust")
-    (description "Thin Python bindings to de/compression algorithms in Rust")
-    (license license:expat)))
-
 (define-public python-cudf
   (package
     (name "python-cudf")
