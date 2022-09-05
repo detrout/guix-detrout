@@ -567,7 +567,14 @@
                 "1xzndlib2f5pdrzxg381bym1b5406ff4psis15f56rqmb9dm5mr3"))))
     (build-system python-build-system)
     (propagated-inputs (list python-param))
-    (native-inputs (list python-flake8 python-pytest))
+    (native-inputs (list python-requests python-flake8 python-pytest python-pyyaml))
+    (arguments
+     `(#:phases
+       (modify-phases %standard-phases
+         (replace 'check
+           (lambda* (#:key tests? #:allow-other-keys)
+             (when tests?
+               (invoke "pytest" "pyct")))))))
     (home-page "https://github.com/pyviz-dev/pyct")
     (synopsis
      "Python package common tasks for users (e.g. copy examples, fetch data, ...)")
