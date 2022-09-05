@@ -336,13 +336,14 @@
                 "0zic8a59a5nm5signbhx5378hvnv8iy1j53q7mpaxzrn3z2qwkj5"))))
     (build-system python-build-system)
     (arguments
-     `(#:phases
+     `(#:tests? #f  ; there are no tests in the pypi version, should check source repository
+       #:phases
        (modify-phases %standard-phases
          (add-before 'build 'set-numpy
            (lambda _
              (substitute* '("setup.py")
                (("oldest-supported-numpy") "numpy")))))))
-    (native-inputs (list python-pytest-runner python-setuptools python-wheel))
+    (native-inputs (list python-pytest python-pytest-runner python-setuptools python-wheel))
     (propagated-inputs (list python-cramjam
                              python-fsspec
                              python-lzo
