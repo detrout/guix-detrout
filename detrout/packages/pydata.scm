@@ -365,38 +365,19 @@
                             python-numpy
                             python-packaging
                             python-pandas
-                            python-panel
+;                            python-panel
                             python-param
                             python-pyviz-comms))
    (native-inputs (list python-bokeh
-                        python-cftime
                         python-codecov
-                        python-cudf
-                        python-dash
-                        python-dask
-                        python-datashader
-                        python-ffmpeg
                         python-flake8
-                        python-ibis-framework
-                        python-ipython
                         python-matplotlib
                         python-nbconvert
-                        python-nbsmoke
                         python-netcdf4
-                        python-networkx
                         python-notebook
-                        python-pillow
-                        python-plotly
-;                        python-pyarrow
                         python-pytest
                         python-pytest-cov
-                        python-scikit-image
-                        python-scipy
-                        python-selenium
-                        python-shapely
-                        python-spatialpandas
-                        python-streamz
-                        python-xarray))
+                        python-scikit-image))
    (home-page "https://www.holoviews.org")
    (synopsis
     "Stop plotting your data - annotate your data and let it visualize itself.")
