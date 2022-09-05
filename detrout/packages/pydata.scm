@@ -502,13 +502,11 @@
                              python-pyct
                              python-pyviz-comms
                              python-requests
-                             python-setuptools
                              python-tqdm
                              python-typing-extensions))
     (native-inputs (list python-codecov
                          python-flake8
                          python-folium
-                         python-holoviews
                          python-ipympl
                          python-ipython
                          python-nbval
@@ -516,8 +514,17 @@
                          python-parameterized
                          python-pytest
                          python-pytest-cov
+                         python-setuptools
                          python-scipy
                          python-twine))
+    (arguments
+     `(#:phases (modify-phases %standard-phases
+                  (add-after 'unpack 'patch-test-suite
+                    (lambda _
+                      (let ((port (open-file "panel/.version" "w")))
+                        (display "{\"version_string\": \"0.13.1\"}" port)
+                        (newline port)
+                        (close-port port)))))))
     (home-page "http://panel.holoviz.org")
     (synopsis "A high level app and dashboarding solution for Python.")
     (description
