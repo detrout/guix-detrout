@@ -225,8 +225,8 @@
                              python-xarray))
     (native-inputs (list python-bokeh
                          python-codecov
-                         python-cudf
-                         python-cupy
+;                         python-cudf
+;                         python-cupy
 ;                         python-dask-cudf ; not on pypi, repo archived?
                          python-fastparquet
                          python-flake8
