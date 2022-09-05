@@ -140,7 +140,9 @@
                          python-cryptography
                          python-fire
                          python-lxml
+                         python-multiprocess
                          python-percy
+                         python-psutil
                          python-pytest
                          python-pyyaml
                          python-requests
