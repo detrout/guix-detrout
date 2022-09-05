@@ -233,7 +233,7 @@
 ;                         python-dask-cudf ; not on pypi, repo archived?
                          python-fastparquet
                          python-flake8
-                         python-holoviews
+;                         python-holoviews
                          python-nbconvert
                          python-nbsmoke
                          python-netcdf4
@@ -241,9 +241,10 @@
                          python-pytest
 ;                         python-pytest-benchmark
                          python-pytest-cov
-                         python-rasterio
-                         python-rioxarray
-                         python-spatialpandas))
+;                         python-rasterio
+;                         python-rioxarray
+;                         python-spatialpandas
+                         ))
     (home-page "https://datashader.org")
     (synopsis "Data visualization toolchain based on aggregating into a grid")
     (description "Data visualization toolchain based on aggregating into a grid")
