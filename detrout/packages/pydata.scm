@@ -410,6 +410,14 @@
                         python-pytest
                         python-pytest-cov
                         python-scikit-image))
+    (arguments
+     `(#:tests? #t
+       #:phases
+       (modify-phases %standard-phases
+         (replace 'check
+           (lambda* (#:key tests? #:allow-other-keys)
+             (when tests?
+               (invoke "python" "-m" "pytest" "holoviews")))))))
    (home-page "https://www.holoviews.org")
    (synopsis
     "Stop plotting your data - annotate your data and let it visualize itself.")
