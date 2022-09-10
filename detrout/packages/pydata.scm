@@ -788,3 +788,20 @@
 
 Optionally, Streamz can also work with both Pandas and cuDF dataframes, to provide sensible streaming operations on continuous tabular data.")
     (license license:bsd-3)))
+
+(define-public python-thrift
+  (package
+    (name "python-thrift")
+    (version "0.16.0")
+    (source (origin
+              (method url-fetch)
+              (uri (pypi-uri "thrift" version))
+              (sha256
+               (base32
+                "0224q7gjaglympaxnvg2d87ms6d0ysgkr8ia66fizlnyzj468nrb"))))
+    (build-system python-build-system)
+    (propagated-inputs (list python-six))
+    (home-page "http://thrift.apache.org")
+    (synopsis "Python bindings for the Apache Thrift RPC system")
+    (description "Python bindings for the Apache Thrift RPC system")
+    (license #f)))
