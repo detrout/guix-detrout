@@ -831,6 +831,18 @@ rustaceans.")
                (base32
                 "0hs1npqx1nx4fwjm59c1n9pr581w0l0fwxk5dwdd5n0dxn1njrm7"))))))
 
+(define-public rust-hdrhistogram-7
+  (package (inherit rust-hdrhistogram-6)
+    (name "rust-hdrhistogram")
+    (version "7.5.1")
+    (source (origin
+              (method url-fetch)
+              (uri (crate-uri "hdrhistogram" version))
+              (file-name (string-append name "-" version ".tar.gz"))
+              (sha256
+               (base32
+                "1ar3wlm3rqnjmp0mwnwrcjirxbs76nd00x899shp89nka8wzxabf"))))))
+
 (define-public rust-heck-0.4
   (package (inherit rust-heck-0.3)
     (name "rust-heck")
