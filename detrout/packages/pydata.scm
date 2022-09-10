@@ -273,6 +273,23 @@
     (description "Dash table")
     (license license:expat)))
 
+(define-public python-datafusion
+  (package
+    (name "python-datafusion")
+    (version "0.6.0")
+    (source (origin
+              (method url-fetch)
+              (uri (pypi-uri "datafusion" version))
+              (sha256
+               (base32
+                "0yamjzdl86ikcvzyw9ajs732yazdqz8iz8rpjnh6r8b537xc08n6"))))
+    (build-system python-build-system)
+    (propagated-inputs (list python-pyarrow))
+    (home-page "https://github.com/apache/arrow")
+    (synopsis "Build and run queries against data")
+    (description "Build and run queries against data")
+    (license #f)))
+
 (define-public python-datashader
   (package
     (name "python-datashader")
