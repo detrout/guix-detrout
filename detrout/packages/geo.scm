@@ -6,6 +6,7 @@
   #:use-module (gnu packages geo)
   #:use-module (gnu packages python-check)
   #:use-module (gnu packages python-crypto)
+  #:use-module (gnu packages python-databases)
   #:use-module (gnu packages python-science)
   #:use-module (gnu packages python-xyz)
   #:use-module (gnu packages sphinx)
