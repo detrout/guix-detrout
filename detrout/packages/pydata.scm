@@ -725,6 +725,24 @@
      "Python package common tasks for users (e.g.  copy examples, fetch data, ...)")
     (license license:bsd-3)))
 
+(define-public python-py4j
+  (package
+    (name "python-py4j")
+    (version "0.10.9.7")
+    (source (origin
+              (method url-fetch)
+              (uri (pypi-uri "py4j" version))
+              (sha256
+               (base32
+                "1fwdx92cdaiviradksfyygg05g1fpc3x2lf65bv5rnispcam6vhb"))))
+    (build-system python-build-system)
+    (home-page "https://www.py4j.org/")
+    (synopsis
+     "Enables Python programs to dynamically access arbitrary Java objects")
+    (description
+     "Enables Python programs to dynamically access arbitrary Java objects")
+    (license license:bsd-3)))
+
 (define-public python-pyspark
   (package
     (name "python-pyspark")
