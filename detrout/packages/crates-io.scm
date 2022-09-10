@@ -710,6 +710,63 @@ scripts")
     (description "Minimal, no_std compatible async prelude.")
     (license (list license:asl2.0))))
 
+(define-public rust-glommio-0.7
+  (package
+    (name "rust-glommio")
+    (version "0.7.0")
+    (source (origin
+              (method url-fetch)
+              (uri (crate-uri "glommio" version))
+              (file-name (string-append name "-" version ".tar.gz"))
+              (sha256
+               (base32
+                "19lp0sa0fcm4w7nk093hlzg6y4rq1b4asz2khdv3kjxbgkk14sfx"))))
+    (build-system cargo-build-system)
+    (arguments
+     `(#:cargo-inputs (("rust-ahash" ,rust-ahash-0.7)
+                       ("rust-backtrace" ,rust-backtrace-0.3)
+                       ("rust-bitflags" ,rust-bitflags-1)
+                       ("rust-bitmaps" ,rust-bitmaps-3)
+                       ("rust-buddy-alloc" ,rust-buddy-alloc-0.4)
+                       ("rust-cc" ,rust-cc-1)
+                       ("rust-concurrent-queue" ,rust-concurrent-queue-1)
+                       ("rust-crossbeam" ,rust-crossbeam-0.8)
+                       ("rust-enclose" ,rust-enclose-1)
+                       ("rust-flume" ,rust-flume-0.10)
+                       ("rust-futures-lite" ,rust-futures-lite-1)
+                       ("rust-intrusive-collections" ,rust-intrusive-collections-0.9)
+                       ("rust-lazy-static" ,rust-lazy-static-1)
+                       ("rust-libc" ,rust-libc-0.2)
+                       ("rust-lockfree" ,rust-lockfree-0.5)
+                       ("rust-log" ,rust-log-0.4)
+                       ("rust-membarrier" ,rust-membarrier-0.2)
+                       ("rust-nix" ,rust-nix-0.23)
+                       ("rust-pin-project-lite" ,rust-pin-project-lite-0.2)
+                       ("rust-rlimit" ,rust-rlimit-0.6)
+                       ("rust-scoped-tls" ,rust-scoped-tls-1)
+                       ("rust-scopeguard" ,rust-scopeguard-1)
+                       ("rust-signal-hook" ,rust-signal-hook-0.3)
+                       ("rust-sketches-ddsketch" ,rust-sketches-ddsketch-0.1)
+                       ("rust-smallvec" ,rust-smallvec-1)
+                       ("rust-socket2" ,rust-socket2-0.3)
+                       ("rust-tracing" ,rust-tracing-0.1)
+                       ("rust-typenum" ,rust-typenum-1))
+       #:cargo-development-inputs (("rust-fastrand" ,rust-fastrand-1)
+                                   ("rust-futures" ,rust-futures-0.3)
+                                   ("rust-hdrhistogram" ,rust-hdrhistogram-7)
+                                   ("rust-pretty-env-logger" ,rust-pretty-env-logger-0.4)
+                                   ("rust-rand" ,rust-rand-0.8)
+                                   ("rust-tokio" ,rust-tokio-1)
+                                   ("rust-tracing-subscriber" ,rust-tracing-subscriber-0.3))))
+    (home-page "https://github.com/DataDog/glommio")
+    (synopsis
+     "Glommio is a thread-per-core crate that makes writing highly parallel asynchronous applications in a thread-per-core architecture easier for rustaceans.")
+    (description
+     "Glommio is a thread-per-core crate that makes writing highly parallel
+asynchronous applications in a thread-per-core architecture easier for
+rustaceans.")
+    (license (list license:asl2.0 license:expat))))
+
 (define-public rust-goblin-0.5
   (package (inherit rust-goblin-0.2)
     (name "rust-goblin")
