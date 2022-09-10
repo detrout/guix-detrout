@@ -121,6 +121,7 @@
     (synopsis "Collection of perceptually uniform colormaps")
     (description "Collection of perceptually uniform colormaps")
     (license license:cc-by4.0)))
+
 ; these depend on cuda which isn't available in guix
 ;(define-public python-cudf
 ;  (package
