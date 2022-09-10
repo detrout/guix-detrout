@@ -1542,6 +1542,27 @@ inter-operation between primitives and enums easier)")
     (description "An HTTP/2 client and server")
     (license license:expat)))
 
+(define-public rust-ntex-http-0.1
+  (package
+    (name "rust-ntex-http")
+    (version "0.1.1")
+    (source (origin
+              (method url-fetch)
+              (uri (crate-uri "ntex-http" version))
+              (file-name (string-append name "-" version ".tar.gz"))
+              (sha256
+               (base32
+                "10mgnzx3sz03g24dqm1zdy6jj49vfg6pyj41y4qxcfsighd0982z"))))
+    (build-system cargo-build-system)
+    (arguments
+     `(#:cargo-inputs (("rust-fxhash" ,rust-fxhash-0.2)
+                       ("rust-http" ,rust-http-0.2)
+                       ("rust-log" ,rust-log-0.4))))
+    (home-page "https://ntex.rs")
+    (synopsis "Http types for ntex framework")
+    (description "Http types for ntex framework")
+    (license license:expat)))
+
 (define-public rust-ntex-io-0.1
   (package
     (name "rust-ntex-io")
