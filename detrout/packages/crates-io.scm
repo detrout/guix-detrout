@@ -87,6 +87,18 @@
     (description "Automatic cfg for Rust compiler features")
     (license (list license:asl2.0 license:expat))))
 
+(define-public rust-bitmaps-3
+  (package (inherit rust-bitmaps-2)
+    (name "rust-bitmaps")
+    (version "3.2.0")
+    (source (origin
+              (method url-fetch)
+              (uri (crate-uri "bitmaps" version))
+              (file-name (string-append name "-" version ".tar.gz"))
+              (sha256
+               (base32
+                "00ql08pm4l9hizkldyy54v0pk96g7zg8x6i72c2vkcq0iawl4dkh"))))))
+
 (define-public rust-buf-min-0.7
   (package
     (name "rust-buf-min")
