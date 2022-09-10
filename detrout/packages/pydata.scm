@@ -46,6 +46,7 @@
   #:use-module (guix build-system python)
   #:use-module (guix build-system trivial)
   #:use-module (detrout packages compression)
+  #:use-module (detrout packages geo)
   #:use-module (detrout packages networking)
   #:use-module (detrout packages python-web)
   #:use-module (detrout packages python-xyz)
