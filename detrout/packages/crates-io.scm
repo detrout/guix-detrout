@@ -1440,6 +1440,41 @@ inter-operation between primitives and enums easier)")
     (description "Utilities for encoding and decoding frames")
     (license license:expat)))
 
+(define-public rust-ntex-connect-0.1
+  (package
+    (name "rust-ntex-connect")
+    (version "0.1.0")
+    (source (origin
+              (method url-fetch)
+              (uri (crate-uri "ntex-connect" version))
+              (file-name (string-append name "-" version ".tar.gz"))
+              (sha256
+               (base32
+                "0ivlp9vvqv4g7z9wgpm2vinshhr932gvvda0m2cdxb0br7zzsjaf"))))
+    (build-system cargo-build-system)
+    (arguments
+     `(#:cargo-inputs (("rust-log" ,rust-log-0.4)
+                       ("rust-ntex-async-std" ,rust-ntex-async-std-0.1)
+                       ("rust-ntex-bytes" ,rust-ntex-bytes-0.1)
+                       ("rust-ntex-glommio" ,rust-ntex-glommio-0.1)
+                       ("rust-ntex-http" ,rust-ntex-http-0.1)
+                       ("rust-ntex-io" ,rust-ntex-io-0.1)
+                       ("rust-ntex-rt" ,rust-ntex-rt-0.4)
+                       ("rust-ntex-service" ,rust-ntex-service-0.3)
+                       ("rust-ntex-tls" ,rust-ntex-tls-0.1)
+                       ("rust-ntex-tokio" ,rust-ntex-tokio-0.1)
+                       ("rust-ntex-util" ,rust-ntex-util-0.1)
+                       ("rust-openssl" ,rust-openssl-0.10)
+                       ("rust-rustls" ,rust-rustls-0.20)
+                       ("rust-thiserror" ,rust-thiserror-1)
+                       ("rust-webpki-roots" ,rust-webpki-roots-0.22))
+       #:cargo-development-inputs (("rust-env-logger" ,rust-env-logger-0.9)
+                                   ("rust-rand" ,rust-rand-0.8))))
+    (home-page "https://ntex.rs")
+    (synopsis "ntexwork connect utils for ntex framework")
+    (description "ntexwork connect utils for ntex framework")
+    (license license:expat)))
+
 (define-public rust-ntex-io-0.1
   (package
     (name "rust-ntex-io")
