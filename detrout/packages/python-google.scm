@@ -52,97 +52,6 @@
     "pyu2f is a python based U2F host library for Linux, Windows, and MacOS. It provides functionality for interacting with a U2F device over USB.")
    (license license:asl2.0)))
 
-
-
-
-;;;;;;;;;;
-(define-public python-google-auth
-  (package
-   (name "python-google-auth")
-   (version "1.30.0")
-   (source
-    (origin
-     (method url-fetch)
-     (uri (pypi-uri "google-auth" version))
-     (sha256
-      (base32
-       "01i2wk4jj0cvgwhmpj9avwq2h9nbiprhkjnhsj564spl0yx5zlls"))))
-   (build-system python-build-system)
-   (propagated-inputs
-    `(("python-cachetools" ,python-cachetools)
-      ("python-pyasn1-modules" ,python-pyasn1-modules)
-      ("python-rsa" ,python-rsa)
-      ("python-six" ,python-six)
-      ("python-aiohttp" ,python-aiohttp)
-      ("python-pyopenssl" ,python-pyopenssl)))
-   (inputs
-    `(("python-pytest" ,python-pytest)
-      ("python-mock" ,python-mock)
-      ("python-freezegun" ,python-freezegun)
-      ("python-flask" ,python-flask)
-      ("python-urllib3" ,python-urllib3)
-      ("python-requests" ,python-requests)
-      ("python-responses" ,python-responses)
-      ("python-gprcio" ,python-grpcio)
-      ("python-pytest-localserver" ,python-pytest-localserver)
-      ("python-oauth2client" ,python-oauth2client)
-      ("python-pyu2f" ,python-pyu2f)))
-   (home-page "https://github.com/googleapis/google-auth-library-python")
-   (synopsis "simplify access too google apis")
-   (description
-    "This library simplifies using Google’s various server-to-server authentication mechanisms to access Google APIs.")
-   (license license:asl2.0)))
-
-(define-public python-googleapis-common-protos
-  (package
-   (name "python-googleapis-common-protos")
-   (version "1.53.0")
-   (source
-    (origin
-     (method url-fetch)
-     (uri (pypi-uri "googleapis-common-protos" version))
-     (sha256
-      (base32
-       "1x7bahcgnj4hnjb096s30ryad2iw5pv5qbgc7in1za507a8fi3m8"))))
-   (build-system python-build-system)
-   (propagated-inputs
-    `(("python-protobuf" ,python-protobuf)
-      ("python-grpcio" ,python-grpcio)))
-   (arguments
-     `(#:tests? #f))                    ; tests failing, don't understand why
-   (home-page "https://github.com/googleapis/python-api-common-protos")
-   (synopsis "googleapis-common-protos contains the python classes generated from the common protos in the googleapis/api-common-protos repository.")
-   (description
-    "googleapis-common-protos contains the python classes generated from the common protos in the googleapis/api-common-protos repository.")
-   (license license:asl2.0)))
-
-(define-public python-google-api-core
-  (package
-   (name "python-google-api-core")
-   (version "1.26.3")
-   (source
-    (origin
-     (method url-fetch)
-     (uri (pypi-uri "google-api-core" version))
-     (sha256
-      (base32
-       "1b1jvy04s5zzramykrpp0iasa15qp81pg8lk4qb62f52grf3855r"))))
-   (build-system python-build-system)
-   (propagated-inputs
-    `(("python-google-auth" ,python-google-auth)
-      ("python-googleapis-common-protos" ,python-googleapis-common-protos)
-      ("python-protobuf" ,python-protobuf)))
-   (inputs
-    `(("python-requests" ,python-requests)
-      ("python-packaging" ,python-packaging)
-      ("python-six" ,python-six)
-      ("python-pytz" ,python-pytz)))
-   (home-page "https://github.com/googleapis/python-api-core")
-   (synopsis "A utility library for Google API clients")
-   (description
-    "This library is not meant to stand-alone. Instead it defines common helpers used by all Google API clients. For more information")
-   (license license:asl2.0)))
-
 (define-public python-proto-plus
   (package
    (name "python-proto-plus")
@@ -188,29 +97,6 @@
    (synopsis "gRPC library for google-iam-v1")
    (description
     "grpc-google-iam-v1 is the IDL-derived library for the google-iam (v1) service in the googleapis repository.")
-   (license license:asl2.0)))
-
-(define-public python-google-cloud-core
-  (package
-   (name "python-google-cloud-core")
-   (version "1.6.0")
-   (source
-    (origin
-     (method url-fetch)
-     (uri (pypi-uri "google-cloud-core" version))
-     (sha256
-      (base32
-       "00mvgh4vm4z5mjnlbiigmp674dwsrrsxxi7ghby7jlsl4y2v3ay6"))))
-   (build-system python-build-system)
-   (inputs
-    `(("python-google-api-core" ,python-google-api-core)
-      ("python-google-auth" ,python-google-auth)
-      ("python-six" ,python-six)
-      ("python-grpcio", python-grpcio)))
-   (home-page "https://github.com/googleapis/python-cloud-core")
-   (synopsis "Common helpers used by all of the google-cloud-* packages")
-   (description
-    "This library is not meant to stand-alone. Instead it defines common helpers (e.g. base Client classes) used by all of the google-cloud-* packages.")
    (license license:asl2.0)))
 
 
