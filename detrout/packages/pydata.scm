@@ -789,8 +789,11 @@
                (base32
                 "1wrljqy6wk10cka8g6c19139a0ay21r5f2al870qki1f9j8dcxsm"))))
     (build-system python-build-system)
-    (propagated-inputs (list python-six python-toolz
-                             python-tornado python-zict))
+    (propagated-inputs
+     (list python-six
+           python-toolz
+           python-tornado-6
+           python-zict))
     (native-inputs
      (list python-cython
            python-confluent-kafka
