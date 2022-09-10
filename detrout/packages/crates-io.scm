@@ -674,6 +674,24 @@ scripts")
                (base32
                 "0hbmlqjwj8q0vl3qsz72hlphszfb80jr9r205bypfmfgf7140d25"))))))
 
+(define-public rust-enclose-1
+  (package
+    (name "rust-enclose")
+    (version "1.1.8")
+    (source (origin
+              (method url-fetch)
+              (uri (crate-uri "enclose" version))
+              (file-name (string-append name "-" version ".tar.gz"))
+              (sha256
+               (base32
+                "0mwk686pzbzabb8s52k4lyiy0qifnm4glbk6b819qvj2v99zamhh"))))
+    (build-system cargo-build-system)
+    (home-page "https://crates.io/crates/enclose")
+    (synopsis "A convenient macro for cloning values into a closure.")
+    (description
+     "This package provides a convenient macro for cloning values into a closure.")
+    (license license:expat)))
+
 (define-public rust-enumflags2-0.7
   (package (inherit rust-enumflags2-0.6)
     (name "rust-enumflags2")
