@@ -892,6 +892,30 @@ rustaceans.")
        (("rust-rand" ,rust-rand-0.7)
         ("rust-tokio" ,rust-tokio-0.2))))))
 
+(define-public rust-intrusive-collections-0.9
+  (package
+    (name "rust-intrusive-collections")
+    (version "0.9.4")
+    (source (origin
+              (method url-fetch)
+              (uri (crate-uri "intrusive-collections" version))
+              (file-name (string-append name "-" version ".tar.gz"))
+              (sha256
+               (base32
+                "12l80x569di2nsvn0krmly5l2m2zv4n3ykvxw7rj0wcxg2kk3rdz"))))
+    (build-system cargo-build-system)
+    (arguments
+     `(#:cargo-inputs (("rust-memoffset" ,rust-memoffset-0.5))
+       #:cargo-development-inputs (("rust-rand" ,rust-rand-0.8)
+                                   ("rust-rand-xorshift" ,rust-rand-xorshift-0.3)
+                                   ("rust-typed-arena" ,rust-typed-arena-2))))
+    (home-page "https://github.com/Amanieu/intrusive-rs")
+    (synopsis
+     "Intrusive collections for Rust (linked list and red-black tree)")
+    (description
+     "Intrusive collections for Rust (linked list and red-black tree)")
+    (license (list license:asl2.0 license:expat))))
+
 (define-public rust-keyring-1
   (package
     (name "rust-keyring")
