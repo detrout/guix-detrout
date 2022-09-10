@@ -34,6 +34,7 @@
   #:use-module (gnu packages python-web)
   #:use-module (gnu packages python-xyz)
   #:use-module (gnu packages time)
+  #:use-module (gnu packages version-control)
   #:use-module (gnu packages xml)
   #:use-module (guix packages)
   #:use-module (guix download)
@@ -45,6 +46,7 @@
   #:use-module (guix build-system trivial)
   #:use-module (detrout packages compression)
   #:use-module (detrout packages networking)
+  #:use-module (detrout packages python-web)
   #:use-module (detrout packages python-xyz)
   #:use-module (srfi srfi-1))
 
