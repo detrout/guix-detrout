@@ -1899,6 +1899,25 @@ threads for the current process.")
      "https://roaringbitmap.org: A better compressed bitset - pure Rust implementation")
     (license (list license:expat license:asl2.0))))
 
+(define-public rust-rlimit-0.6
+  (package
+    (name "rust-rlimit")
+    (version "0.6.2")
+    (source (origin
+              (method url-fetch)
+              (uri (crate-uri "rlimit" version))
+              (file-name (string-append name "-" version ".tar.gz"))
+              (sha256
+               (base32
+                "09hpr6dfrx7xzlps7g25akqp2p32190vhcj3ymid6vrpaiaz42yc"))))
+    (build-system cargo-build-system)
+    (arguments
+     `(#:cargo-inputs (("rust-libc" ,rust-libc-0.2))))
+    (home-page "https://github.com/Nugine/rlimit/")
+    (synopsis "Resource limits")
+    (description "Resource limits")
+    (license license:expat)))
+
 (define-public rust-rpassword-7
   (package (inherit rust-rpassword-5)
     (name "rust-rpassword")
