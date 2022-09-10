@@ -99,6 +99,27 @@
                (base32
                 "00ql08pm4l9hizkldyy54v0pk96g7zg8x6i72c2vkcq0iawl4dkh"))))))
 
+(define-public rust-buddy-alloc-0.4
+  (package
+    (name "rust-buddy-alloc")
+    (version "0.4.1")
+    (source (origin
+              (method url-fetch)
+              (uri (crate-uri "buddy-alloc" version))
+              (file-name (string-append name "-" version ".tar.gz"))
+              (sha256
+               (base32
+                "1m9z7wbiblh3fi2wg5510g59ddsmj85b9pmmwa2xn1k4k0wg7ycg"))))
+    (build-system cargo-build-system)
+    (arguments
+     `(#:cargo-development-inputs (("rust-criterion" ,rust-criterion-0.3))))
+    (home-page "https://github.com/jjyr/buddy-alloc")
+    (synopsis
+     "Buddy-alloc is a memory allocator for no-std Rust, used for embedded environments.")
+    (description
+     "Buddy-alloc is a memory allocator for no-std Rust, used for embedded
+environments.")
+
 (define-public rust-buf-min-0.7
   (package
     (name "rust-buf-min")
