@@ -1233,6 +1233,215 @@ inter-operation between primitives and enums easier)")
     (description "Types and traits for working with bytes (bytes crate fork)")
     (license license:expat)))
 
+(define-public rust-ntex-io-0.1
+  (package
+    (name "rust-ntex-io")
+    (version "0.1.8")
+    (source (origin
+              (method url-fetch)
+              (uri (crate-uri "ntex-io" version))
+              (file-name (string-append name "-" version ".tar.gz"))
+              (sha256
+               (base32
+                "0bpzpvlx86087f1f30g64f3azwhq0yjaayjb90n9i167r7b79r3k"))))
+    (build-system cargo-build-system)
+    (arguments
+     `(#:cargo-inputs (("rust-bitflags" ,rust-bitflags-1)
+                       ("rust-log" ,rust-log-0.4)
+                       ("rust-ntex-bytes" ,rust-ntex-bytes-0.1)
+                       ("rust-ntex-codec" ,rust-ntex-codec-0.6)
+                       ("rust-ntex-service" ,rust-ntex-service-0.3)
+                       ("rust-ntex-util" ,rust-ntex-util-0.1)
+                       ("rust-pin-project-lite" ,rust-pin-project-lite-0.2))
+       #:cargo-development-inputs (("rust-env-logger" ,rust-env-logger-0.9)
+                                   ("rust-ntex" ,rust-ntex-0.5)
+                                   ("rust-rand" ,rust-rand-0.8))))
+    (home-page "https://ntex.rs")
+    (synopsis "Utilities for encoding and decoding frames")
+    (description "Utilities for encoding and decoding frames")
+    (license license:expat)))
+
+(define-public rust-ntex-macros-0.1
+  (package
+    (name "rust-ntex-macros")
+    (version "0.1.3")
+    (source (origin
+              (method url-fetch)
+              (uri (crate-uri "ntex-macros" version))
+              (file-name (string-append name "-" version ".tar.gz"))
+              (sha256
+               (base32
+                "117d2w4fiq99lbv3k0ghgixdadql5g170l378q22nw8cl7r5k8sh"))))
+    (build-system cargo-build-system)
+    (arguments
+     `(#:cargo-inputs (("rust-proc-macro2" ,rust-proc-macro2-1)
+                       ("rust-quote" ,rust-quote-1)
+                       ("rust-syn" ,rust-syn-1))
+       #:cargo-development-inputs (("rust-futures" ,rust-futures-0.3)
+                                   ("rust-ntex" ,rust-ntex-0.3))))
+    (home-page "")
+    (synopsis "ntex proc macros")
+    (description "ntex proc macros")
+    (license license:expat)))
+
+(define-public rust-ntex-router-0.5
+  (package
+    (name "rust-ntex-router")
+    (version "0.5.1")
+    (source (origin
+              (method url-fetch)
+              (uri (crate-uri "ntex-router" version))
+              (file-name (string-append name "-" version ".tar.gz"))
+              (sha256
+               (base32
+                "17hvrjamc4zp22ycgi7fa93vyzw2xrz66djvc6ljnmgwd751nqv7"))))
+    (build-system cargo-build-system)
+    (arguments
+     `(#:cargo-inputs (("rust-http" ,rust-http-0.2)
+                       ("rust-log" ,rust-log-0.4)
+                       ("rust-ntex-bytes" ,rust-ntex-bytes-0.1)
+                       ("rust-regex" ,rust-regex-1)
+                       ("rust-serde" ,rust-serde-1))
+       #:cargo-development-inputs (("rust-http" ,rust-http-0.2)
+                                   ("rust-serde-derive" ,rust-serde-derive-1))))
+    (home-page "https://github.com/ntex-rs/ntex.git")
+    (synopsis "Path router")
+    (description "Path router")
+    (license license:expat)))
+
+(define-public rust-ntex-rt-0.4
+  (package
+    (name "rust-ntex-rt")
+    (version "0.4.5")
+    (source (origin
+              (method url-fetch)
+              (uri (crate-uri "ntex-rt" version))
+              (file-name (string-append name "-" version ".tar.gz"))
+              (sha256
+               (base32
+                "0grz2yxsnh8y85z5p4v315ylp70gcsw2iqyagsk7cnh43dx50mr9"))))
+    (build-system cargo-build-system)
+    (arguments
+     `(#:cargo-inputs (("rust-async-channel" ,rust-async-channel-1)
+                       ("rust-async-oneshot" ,rust-async-oneshot-0.5)
+                       ("rust-async-std" ,rust-async-std-1)
+                       ("rust-futures-channel" ,rust-futures-channel-0.3)
+                       ("rust-futures-core" ,rust-futures-core-0.3)
+                       ("rust-glommio" ,rust-glommio-0.7)
+                       ("rust-log" ,rust-log-0.4)
+                       ("rust-tokio" ,rust-tokio-1))))
+    (home-page "https://ntex.rs")
+    (synopsis "ntex runtime")
+    (description "ntex runtime")
+    (license license:expat)))
+
+(define-public rust-ntex-service-0.3
+  (package
+    (name "rust-ntex-service")
+    (version "0.3.3")
+    (source (origin
+              (method url-fetch)
+              (uri (crate-uri "ntex-service" version))
+              (file-name (string-append name "-" version ".tar.gz"))
+              (sha256
+               (base32
+                "171v8854jkmnian6l7v6fxdanlrjqvn3s771n6h8vhfsrqqbcbrh"))))
+    (build-system cargo-build-system)
+    (arguments
+     `(#:cargo-inputs (("rust-pin-project-lite" ,rust-pin-project-lite-0.2))
+       #:cargo-development-inputs (("rust-ntex" ,rust-ntex-0.5)
+                                   ("rust-ntex-util" ,rust-ntex-util-0.1))))
+    (home-page "https://ntex.rs")
+    (synopsis "ntex service")
+    (description "ntex service")
+    (license license:expat)))
+
+(define-public rust-ntex-tls-0.1
+  (package
+    (name "rust-ntex-tls")
+    (version "0.1.5")
+    (source (origin
+              (method url-fetch)
+              (uri (crate-uri "ntex-tls" version))
+              (file-name (string-append name "-" version ".tar.gz"))
+              (sha256
+               (base32
+                "0jwkrpdd61va376yd97i07jcr61ncfi90q7lffsjr0ffria1g100"))))
+    (build-system cargo-build-system)
+    (arguments
+     `(#:cargo-inputs (("rust-ntex-bytes" ,rust-ntex-bytes-0.1)
+                       ("rust-ntex-io" ,rust-ntex-io-0.1)
+                       ("rust-ntex-service" ,rust-ntex-service-0.3)
+                       ("rust-ntex-util" ,rust-ntex-util-0.1)
+                       ("rust-openssl" ,rust-openssl-0.10)
+                       ("rust-pin-project-lite" ,rust-pin-project-lite-0.2)
+                       ("rust-rustls" ,rust-rustls-0.20))
+       #:cargo-development-inputs (("rust-env-logger" ,rust-env-logger-0.9)
+                                   ("rust-log" ,rust-log-0.4)
+                                   ("rust-ntex" ,rust-ntex-0.5)
+                                   ("rust-rustls-pemfile" ,rust-rustls-pemfile-0.2)
+                                   ("rust-webpki-roots" ,rust-webpki-roots-0.22))))
+    (home-page "https://ntex.rs")
+    (synopsis "An implementation of SSL streams for ntex backed by OpenSSL")
+    (description "An implementation of SSL streams for ntex backed by OpenSSL")
+    (license license:expat)))
+
+(define-public rust-ntex-tokio-0.1
+  (package
+    (name "rust-ntex-tokio")
+    (version "0.1.3")
+    (source (origin
+              (method url-fetch)
+              (uri (crate-uri "ntex-tokio" version))
+              (file-name (string-append name "-" version ".tar.gz"))
+              (sha256
+               (base32
+                "0f7y55r6jgjzylkb9ikz7vkk3134ajgrsr3s3ajxngr0xpflgkzh"))))
+    (build-system cargo-build-system)
+    (arguments
+     `(#:cargo-inputs (("rust-log" ,rust-log-0.4)
+                       ("rust-ntex-bytes" ,rust-ntex-bytes-0.1)
+                       ("rust-ntex-io" ,rust-ntex-io-0.1)
+                       ("rust-ntex-util" ,rust-ntex-util-0.1)
+                       ("rust-pin-project-lite" ,rust-pin-project-lite-0.2)
+                       ("rust-tokio" ,rust-tokio-1))))
+    (home-page "https://ntex.rs")
+    (synopsis "tokio intergration for ntex framework")
+    (description "tokio intergration for ntex framework")
+    (license license:expat)))
+
+(define-public rust-ntex-util-0.1
+  (package
+    (name "rust-ntex-util")
+    (version "0.1.17")
+    (source (origin
+              (method url-fetch)
+              (uri (crate-uri "ntex-util" version))
+              (file-name (string-append name "-" version ".tar.gz"))
+              (sha256
+               (base32
+                "0y96qrz7l1sax17qgwbkb4xivsyqbgacpdl0zjh65i4ra3m1bgwb"))))
+    (build-system cargo-build-system)
+    (arguments
+     `(#:cargo-inputs (("rust-bitflags" ,rust-bitflags-1)
+                       ("rust-futures-core" ,rust-futures-core-0.3)
+                       ("rust-futures-sink" ,rust-futures-sink-0.3)
+                       ("rust-futures-timer" ,rust-futures-timer-3)
+                       ("rust-fxhash" ,rust-fxhash-0.2)
+                       ("rust-log" ,rust-log-0.4)
+                       ("rust-ntex-rt" ,rust-ntex-rt-0.4)
+                       ("rust-ntex-service" ,rust-ntex-service-0.3)
+                       ("rust-pin-project-lite" ,rust-pin-project-lite-0.2)
+                       ("rust-slab" ,rust-slab-0.4))
+       #:cargo-development-inputs (("rust-futures-util" ,rust-futures-util-0.3)
+                                   ("rust-ntex" ,rust-ntex-0.5)
+                                   ("rust-ntex-bytes" ,rust-ntex-bytes-0.1)
+                                   ("rust-ntex-macros" ,rust-ntex-macros-0.1))))
+    (home-page "https://ntex.rs")
+    (synopsis "Utilities for ntex framework")
+    (description "Utilities for ntex framework")
+    (license license:expat)))
+
 (define-public rust-num-threads-0.1
   (package
     (name "rust-num-threads")
