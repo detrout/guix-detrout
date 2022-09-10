@@ -1233,6 +1233,25 @@ inter-operation between primitives and enums easier)")
     (description "Types and traits for working with bytes (bytes crate fork)")
     (license license:expat)))
 
+(define-public rust-ntex-codec-0.6
+  (package
+    (name "rust-ntex-codec")
+    (version "0.6.2")
+    (source (origin
+              (method url-fetch)
+              (uri (crate-uri "ntex-codec" version))
+              (file-name (string-append name "-" version ".tar.gz"))
+              (sha256
+               (base32
+                "1nkgwjy26c7ih32ncgv4nnqj18d2iir9dx1df5fr3fs6v48y39v9"))))
+    (build-system cargo-build-system)
+    (arguments
+     `(#:cargo-inputs (("rust-ntex-bytes" ,rust-ntex-bytes-0.1))))
+    (home-page "https://ntex.rs")
+    (synopsis "Utilities for encoding and decoding frames")
+    (description "Utilities for encoding and decoding frames")
+    (license license:expat)))
+
 (define-public rust-ntex-io-0.1
   (package
     (name "rust-ntex-io")
