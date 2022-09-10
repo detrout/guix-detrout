@@ -47,6 +47,29 @@
     (description "Async broadcast channels")
     (license (list license:expat license:asl2.0))))
 
+(define-public rust-async-oneshot-0.5
+  (package
+    (name "rust-async-oneshot")
+    (version "0.5.0")
+    (source (origin
+              (method url-fetch)
+              (uri (crate-uri "async-oneshot" version))
+              (file-name (string-append name "-" version ".tar.gz"))
+              (sha256
+               (base32
+                "0b1f0kvp2cfm53hh4y62w2j5qh0psqpnjc3z2zlkj0fbrddwgiqy"))))
+    (build-system cargo-build-system)
+    (arguments
+     `(#:cargo-inputs (("rust-futures-micro" ,rust-futures-micro-0.5))
+       #:cargo-development-inputs (("rust-criterion" ,rust-criterion-0.3)
+                                   ("rust-futures-lite" ,rust-futures-lite-1)
+                                   ("rust-waker-fn" ,rust-waker-fn-1))))
+    (home-page "https://github.com/irrustible/async-oneshot")
+    (synopsis "A fast, small, full-featured, async-aware oneshot channel.")
+    (description
+     "This package provides a fast, small, full-featured, async-aware oneshot channel.")
+    (license license:mpl2.0)))
+
 (define-public rust-autocfg-1.1
   (package
     (name "rust-autocfg")
