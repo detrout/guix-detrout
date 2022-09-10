@@ -1722,6 +1722,24 @@ threads for the current process.")
     (description "Detect the operating system type")
     (license license:expat)))
 
+(define-public rust-owned-alloc-0.2
+  (package
+    (name "rust-owned-alloc")
+    (version "0.2.0")
+    (source (origin
+              (method url-fetch)
+              (uri (crate-uri "owned-alloc" version))
+              (file-name (string-append name "-" version ".tar.gz"))
+              (sha256
+               (base32
+                "1mh54983yz8chn6lc4rgvhazys73dc129y654a9gy4ls3x0ypz1h"))))
+    (build-system cargo-build-system)
+    (home-page "https://gitlab.com/bzim/owned-alloc")
+    (synopsis "A crate to help reducing manual memory management errors.")
+    (description
+     "This package provides a crate to help reducing manual memory management errors.")
+    (license license:expat)))
+
 (define-public rust-parking-lot-0.12
   (package (inherit rust-parking-lot-0.11)
     (name "rust-parking-lot")
