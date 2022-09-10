@@ -2111,6 +2111,18 @@ threads for the current process.")
     (description "Simple RFC 2047 MIME Message Header decoder")
     (license license:bsd-3)))
 
+(define-public rust-rustls-pemfile-1
+  (package (inherit rust-rustls-pemfile-0.2)
+    (name "rust-rustls-pemfile")
+    (version "1.0.1")
+    (source (origin
+              (method url-fetch)
+              (uri (crate-uri "rustls-pemfile" version))
+              (file-name (string-append name "-" version ".tar.gz"))
+              (sha256
+               (base32
+                "0mdxhxp73vxh5pqk5nx2xdxg1z1xkn1yzrc6inh5mh7qagzswr08"))))))
+
 (define-public rust-schannel-0.1.17
   (package (inherit rust-schannel-0.1)
     (name "rust-schannel")
