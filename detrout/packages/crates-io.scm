@@ -1475,6 +1475,31 @@ inter-operation between primitives and enums easier)")
     (description "ntexwork connect utils for ntex framework")
     (license license:expat)))
 
+(define-public rust-ntex-glommio-0.1
+  (package
+    (name "rust-ntex-glommio")
+    (version "0.1.2")
+    (source (origin
+              (method url-fetch)
+              (uri (crate-uri "ntex-glommio" version))
+              (file-name (string-append name "-" version ".tar.gz"))
+              (sha256
+               (base32
+                "0lj9r9p9bd16gr2i7h4wa0nbmk3jacjngkx5xs9162zflvwvfjnw"))))
+    (build-system cargo-build-system)
+    (arguments
+     `(#:cargo-inputs (("rust-async-oneshot" ,rust-async-oneshot-0.5)
+                       ("rust-futures-lite" ,rust-futures-lite-1)
+                       ("rust-glommio" ,rust-glommio-0.7)
+                       ("rust-log" ,rust-log-0.4)
+                       ("rust-ntex-bytes" ,rust-ntex-bytes-0.1)
+                       ("rust-ntex-io" ,rust-ntex-io-0.1)
+                       ("rust-ntex-util" ,rust-ntex-util-0.1))))
+    (home-page "https://ntex.rs")
+    (synopsis "glommio intergration for ntex framework")
+    (description "glommio intergration for ntex framework")
+    (license license:expat)))
+
 (define-public rust-ntex-io-0.1
   (package
     (name "rust-ntex-io")
