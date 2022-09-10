@@ -372,6 +372,40 @@
     (description "This package provides a data description language.")
     (license license:bsd-3)))
 
+(define-public python-duckdb
+  (package
+    (name "python-duckdb")
+    (version "0.5.0")
+    (source (origin
+              (method url-fetch)
+              (uri (pypi-uri "duckdb" version))
+              (sha256
+               (base32
+                "0k4gya8x246kl2w51w7jnb0hb7q0jk2w47q1w2jgi2m7w0alcy81"))))
+    (build-system python-build-system)
+    (propagated-inputs (list python-numpy))
+    (home-page "https://www.duckdb.org")
+    (synopsis "DuckDB embedded database")
+    (description "DuckDB embedded database")
+    (license license:expat)))
+
+(define-public python-duckdb-engine
+  (package
+    (name "python-duckdb-engine")
+    (version "0.6.3")
+    (source (origin
+              (method url-fetch)
+              (uri (pypi-uri "duckdb_engine" version))
+              (sha256
+               (base32
+                "0d30gnvhrnlzmh5kcrb6m1k6wxa294n878pf0ff5hf5zqd7dlq6s"))))
+    (build-system python-build-system)
+    (propagated-inputs (list python-duckdb python-numpy python-sqlalchemy))
+    (home-page "https://github.com/Mause/duckdb_engine")
+    (synopsis "SQLAlchemy driver for duckdb")
+    (description "SQLAlchemy driver for duckdb")
+    (license license:expat)))
+
 (define-public python-fastrlock
   (package
     (name "python-fastrlock")
@@ -525,6 +559,24 @@
     (description "Productivity-centric Python Big Data Framework")
     (license #f)))
 
+(define-public python-impyla
+  (package
+    (name "python-impyla")
+    (version "0.17.0")
+    (source (origin
+              (method url-fetch)
+              (uri (pypi-uri "impyla" version))
+              (sha256
+               (base32
+                "01ik8jlrc0rfs0mnwyxkjajzz4qz3w631allcdq40pypjkswhi1f"))))
+    (build-system python-build-system)
+    (propagated-inputs (list python-bitarray python-six python-thrift
+                             python-thrift-sasl))
+    (home-page "https://github.com/cloudera/impyla")
+    (synopsis "Python client for the Impala distributed query engine")
+    (description "Python client for the Impala distributed query engine")
+    (license license:asl2.0)))
+
 (define-public python-nbsmoke
   (package
     (name "python-nbsmoke")
@@ -655,6 +707,23 @@
      "Python package common tasks for users (e.g.  copy examples, fetch data, ...)")
     (license license:bsd-3)))
 
+(define-public python-pyspark
+  (package
+    (name "python-pyspark")
+    (version "3.3.0")
+    (source (origin
+              (method url-fetch)
+              (uri (pypi-uri "pyspark" version))
+              (sha256
+               (base32
+                "1xrcx7nfwxw7r1g6rbgq3h192f7x1nkgr0js9l94syv40naqxgky"))))
+    (build-system python-build-system)
+    (propagated-inputs (list python-py4j))
+    (home-page "https://github.com/apache/spark/tree/master/python")
+    (synopsis "Apache Spark Python API")
+    (description "Apache Spark Python API")
+    (license #f)))
+  
 (define-public python-pyviz-comms
   (package
     (name "python-pyviz-comms")
