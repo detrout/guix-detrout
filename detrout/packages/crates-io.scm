@@ -2171,17 +2171,17 @@ threads for the current process.")
     (description "provides assert_eq! like macros with colorized diff output")
     (license license:asl2.0)))
 
-(define-public rust-sketches-ddsketch-0.2
+(define-public rust-sketches-ddsketch-0.1
   (package
     (name "rust-sketches-ddsketch")
-    (version "0.2.0")
+    (version "0.1.3")
     (source (origin
               (method url-fetch)
               (uri (crate-uri "sketches-ddsketch" version))
               (file-name (string-append name "-" version ".tar.gz"))
               (sha256
                (base32
-                "1rwsvarn13w8mnibl2slzk348l5xa5w2gwg4v11rrq1887jlbfff"))))
+                "1vk4fa3adwcx0dqqrcz3vp955wfcaw555gg6w8ib2cygbypfrlh4"))))
     (build-system cargo-build-system)
     (arguments
      `(#:cargo-development-inputs (("rust-approx" ,rust-approx-0.5)
