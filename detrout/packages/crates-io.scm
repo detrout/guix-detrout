@@ -141,6 +141,18 @@ environments.")
     (description "Minimal utf-8 safe buffer traits")
     (license (list license:expat license:asl2.0))))
 
+(define-public rust-bytestring-1
+  (package (inherit rust-bytestring-0.1)
+    (name "rust-bytestring")
+    (version "1.1.0")
+    (source (origin
+              (method url-fetch)
+              (uri (crate-uri "bytestring" version))
+              (file-name (string-append name "-" version ".tar.gz"))
+              (sha256
+               (base32
+                "12ljqf7v6x094n89vy6s1ab130dy2abxfp5g0vphi204sdgsgdl6"))))))
+
 (define-public rust-bzip2-0.4.3
   (package (inherit rust-bzip2-0.4)
     (name "rust-bzip2")
@@ -1370,6 +1382,52 @@ inter-operation between primitives and enums easier)")
     (description "Framework for composable network services")
     (license license:expat)))
 
+(define-public rust-ntex-0.3
+  (package (inherit rust-ntex-0.5)
+    (name "rust-ntex")
+    (version "0.3.18")
+    (source (origin
+              (method url-fetch)
+              (uri (crate-uri "ntex" version))
+              (file-name (string-append name "-" version ".tar.gz"))
+              (sha256
+               (base32
+                "1fmgwwzdgyyngcaznlchx7iyxpqv9nzcgz563x8dplc7hk9k3rp3"))))
+    (arguments
+     `(#:cargo-inputs (("rust-ahash" ,rust-ahash-0.7)
+                       ("rust-base64" ,rust-base64-0.13)
+                       ("rust-bitflags" ,rust-bitflags-1)
+                       ("rust-bytes" ,rust-bytes-1)
+                       ("rust-bytestring" ,rust-bytestring-1)
+                       ("rust-derive-more" ,rust-derive-more-0.99)
+                       ("rust-futures-core" ,rust-futures-core-0.3)
+                       ("rust-futures-sink" ,rust-futures-sink-0.3)
+                       ("rust-log" ,rust-log-0.4)
+                       ("rust-mio" ,rust-mio-0.7)
+                       ("rust-nanorand" ,rust-nanorand-0.5)
+                       ("rust-ntex-codec" ,rust-ntex-codec-0.4)
+                       ("rust-ntex-macros" ,rust-ntex-macros-0.1)
+                       ("rust-ntex-router" ,rust-ntex-router-0.4)
+                       ("rust-ntex-rt" ,rust-ntex-rt-0.2)
+                       ("rust-ntex-service" ,rust-ntex-service-0.1)
+                       ("rust-ntex-util" ,rust-ntex-util-0.1)
+                       ("rust-num-cpus" ,rust-num-cpus-1)
+                       ("rust-pin-project-lite" ,rust-pin-project-lite-0.2)
+                       ("rust-regex" ,rust-regex-1)
+                       ("rust-serde" ,rust-serde-1)
+                       ("rust-sha-1" ,rust-sha-1-0.9)
+                       ("rust-slap" ,rust-slab-0.4)
+                       ("rust-socket2" ,rust-socket2-0.4)
+                       ("rust-tokio" ,rust-tokio-1))
+                      ; ignored optional dependencies
+       #:cargo-development-inputs (("rust-env-logger" ,rust-env-logger-0.8)
+                                   ("rust-futures" ,rust-futures-0.3)
+                                   ("rust-openssl" ,rust-openssl-0.10)
+                                   ("rust-rand" ,rust-rand-0.8)
+                                   ("rust-rustls" ,rust-rustls-0.19)
+                                   ("rust-time" ,rust-time-0.2)
+                                   ("rust-webpki" ,rust-webpki-0.21))))))
+
 (define-public rust-ntex-async-std-0.1
   (package
     (name "rust-ntex-async-std")
@@ -1439,6 +1497,18 @@ inter-operation between primitives and enums easier)")
     (synopsis "Utilities for encoding and decoding frames")
     (description "Utilities for encoding and decoding frames")
     (license license:expat)))
+
+(define-public rust-ntex-codec-0.4
+  (package (inherit rust-ntex-codec-0.6)
+    (name "rust-ntex-codec")
+    (version "0.4.1")
+    (source (origin
+              (method url-fetch)
+              (uri (crate-uri "ntex-codec" version))
+              (file-name (string-append name "-" version ".tar.gz"))
+              (sha256
+               (base32
+                "0xjclv9j83h5a82i93a3waqnxapirard56d3l8yx63raf7f1v3xq"))))))
 
 (define-public rust-ntex-connect-0.1
   (package
@@ -1639,6 +1709,18 @@ inter-operation between primitives and enums easier)")
     (description "Path router")
     (license license:expat)))
 
+(define-public rust-ntex-router-0.4
+  (package (inherit rust-ntex-router-0.5)
+    (name "rust-ntex-router")
+    (version "0.4.4")
+    (source (origin
+              (method url-fetch)
+              (uri (crate-uri "ntex-router" version))
+              (file-name (string-append name "-" version ".tar.gz"))
+              (sha256
+               (base32
+                "0dznxq6gvz1swhb0f2i4s3ggm39zbzbvp1rm16n69fxl0gx0xylb"))))))
+
 (define-public rust-ntex-rt-0.4
   (package
     (name "rust-ntex-rt")
@@ -1665,6 +1747,18 @@ inter-operation between primitives and enums easier)")
     (description "ntex runtime")
     (license license:expat)))
 
+(define-public rust-ntex-rt-0.2
+  (package (inherit rust-ntex-rt-0.4)
+    (name "rust-ntex-rt")
+    (version "0.2.2")
+    (source (origin
+              (method url-fetch)
+              (uri (crate-uri "ntex-rt" version))
+              (file-name (string-append name "-" version ".tar.gz"))
+              (sha256
+               (base32
+                "0q04q48r4mm0gg3x8hbdm6gvh7sk2ns7cin01wzgjc0wgp6cfg2b"))))))
+
 (define-public rust-ntex-service-0.3
   (package
     (name "rust-ntex-service")
@@ -1685,6 +1779,18 @@ inter-operation between primitives and enums easier)")
     (synopsis "ntex service")
     (description "ntex service")
     (license license:expat)))
+
+(define-public rust-ntex-service-0.1
+  (package (inherit rust-ntex-service-0.3)
+    (name "rust-ntex-service")
+    (version "0.1.9")
+    (source (origin
+              (method url-fetch)
+              (uri (crate-uri "ntex-service" version))
+              (file-name (string-append name "-" version ".tar.gz"))
+              (sha256
+               (base32
+                "1x75mqbk4rmqj7821xwp8ljikqln9hpq993m8s89jzwyxy6mp14a"))))))
 
 (define-public rust-ntex-tls-0.1
   (package
