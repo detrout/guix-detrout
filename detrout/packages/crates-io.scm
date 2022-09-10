@@ -1054,6 +1054,28 @@ as an alternative of hazard pointers")
      "Decompression implementation for Microsoft's LZXD compression format.")
     (license (list license:expat license:asl2.0))))
 
+(define-public rust-membarrier-0.2
+  (package
+    (name "rust-membarrier")
+    (version "0.2.2")
+    (source (origin
+              (method url-fetch)
+              (uri (crate-uri "membarrier" version))
+              (file-name (string-append name "-" version ".tar.gz"))
+              (sha256
+               (base32
+                "072vjmfdr0hggcdxbi7dg2mkmhkygc2ca1jrddk2pyz5sw8hhnwj"))))
+    (build-system cargo-build-system)
+    (arguments
+     `(#:cargo-inputs (("rust-cfg-if" ,rust-cfg-if-1)
+                       ("rust-kernel32-sys" ,rust-kernel32-sys-0.2)
+                       ("rust-lazy-static" ,rust-lazy-static-1)
+                       ("rust-libc" ,rust-libc-0.2))))
+    (home-page "https://github.com/jeehoonkang/membarrier-rs")
+    (synopsis "Process-wide memory barrier")
+    (description "Process-wide memory barrier")
+    (license (list license:expat license:asl2.0))))
+
 (define-public rust-memo-map-0.3
   (package
     (name "rust-memo-map")
