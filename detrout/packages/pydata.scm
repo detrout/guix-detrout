@@ -23,6 +23,7 @@
   #:use-module (gnu packages databases)
   #:use-module (gnu packages geo)
   #:use-module (gnu packages graph)
+  #:use-module (gnu packages graphviz)
   #:use-module (gnu packages jupyter)
   #:use-module (gnu packages pkg-config)
   #:use-module (gnu packages python)
