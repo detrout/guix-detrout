@@ -1182,6 +1182,31 @@ inter-operation between primitives and enums easier)")
     (description "Framework for composable network services")
     (license license:expat)))
 
+(define-public rust-ntex-async-std-0.1
+  (package
+    (name "rust-ntex-async-std")
+    (version "0.1.1")
+    (source (origin
+              (method url-fetch)
+              (uri (crate-uri "ntex-async-std" version))
+              (file-name (string-append name "-" version ".tar.gz"))
+              (sha256
+               (base32
+                "1vbkjjc57vifxllx3a3r6n6fnzzpc3hncgpzq4lzgwn13dvfwapd"))))
+    (build-system cargo-build-system)
+    (arguments
+     `(#:cargo-inputs (("rust-async-oneshot" ,rust-async-oneshot-0.5)
+                       ("rust-async-std" ,rust-async-std-1)
+                       ("rust-log" ,rust-log-0.4)
+                       ("rust-ntex-bytes" ,rust-ntex-bytes-0.1)
+                       ("rust-ntex-io" ,rust-ntex-io-0.1)
+                       ("rust-ntex-util" ,rust-ntex-util-0.1)
+                       ("rust-pin-project-lite" ,rust-pin-project-lite-0.2))))
+    (home-page "https://ntex.rs")
+    (synopsis "async-std intergration for ntex framework")
+    (description "async-std intergration for ntex framework")
+    (license license:expat)))
+
 (define-public rust-ntex-bytes-0.1
   (package
     (name "rust-ntex-bytes")
