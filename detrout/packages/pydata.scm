@@ -51,6 +51,41 @@
   #:use-module (detrout packages python-xyz)
   #:use-module (srfi srfi-1))
 
+(define-public python-clickhouse-cityhash
+  (package
+    (name "python-clickhouse-cityhash")
+    (version "1.0.2.3")
+    (source (origin
+              (method url-fetch)
+              (uri (pypi-uri "clickhouse-cityhash" version))
+              (sha256
+               (base32
+                "0z8nl0ly2p1h6nygwxs6y40q8y424w40fkjv3jyf8vvcg4h7sdrg"))))
+    (build-system python-build-system)
+    (home-page "https://github.com/xzkostyan/python-cityhash")
+    (synopsis
+     "Python-bindings for CityHash, a fast non-cryptographic hash algorithm")
+    (description
+     "Python-bindings for CityHash, a fast non-cryptographic hash algorithm")
+    (license license:expat)))
+
+  (define-public python-clickhouse-driver
+    (package
+      (name "python-clickhouse-driver")
+      (version "0.2.4")
+      (source (origin
+                (method url-fetch)
+                (uri (pypi-uri "clickhouse-driver" version))
+                (sha256
+                 (base32
+                  "1p2n1iy3s4061i7w7fmvp7w5669qr5cjngi5qw85hpb4pj043g5v"))))
+      (build-system python-build-system)
+      (propagated-inputs (list python-pytz python-tzlocal))
+      (home-page "https://github.com/mymarilyn/clickhouse-driver")
+      (synopsis "Python driver with native interface for ClickHouse")
+      (description "Python driver with native interface for ClickHouse")
+      (license license:expat)))
+
 (define-public python-colorcet
   (package
     (name "python-colorcet")
