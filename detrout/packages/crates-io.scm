@@ -973,6 +973,18 @@ scripts")
     (description "Read/write Windows Installer (MSI) files")
     (license license:expat)))
 
+(define-public rust-nanorand-0.6
+  (package (inherit rust-nanorand-0.5)
+    (name "rust-nanorand")
+    (version "0.6.0")
+    (source (origin
+              (method url-fetch)
+              (uri (crate-uri "nanorand" version))
+              (file-name (string-append name "-" version ".tar.gz"))
+              (sha256
+               (base32
+                "1drz0xrhss13d15p9lzzypn2a2r7kqdsihkymqck84lzn8y7ds82"))))))
+
 (define-public rust-native-tls-0.2.10
   (package (inherit rust-native-tls-0.2)
     (name "rust-native-tls")
