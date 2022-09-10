@@ -32,6 +32,23 @@
     (description "Computes extremal rays with filtering")
     (license #f)))
 
+(define-public python-geoalchemy2
+  (package
+    (name "python-geoalchemy2")
+    (version "0.12.5")
+    (source (origin
+              (method url-fetch)
+              (uri (pypi-uri "GeoAlchemy2" version))
+              (sha256
+               (base32
+                "0ryx10g0k1lv9m8vwa678sga67sh5mb8gsz46nrmfyrirqnm1hii"))))
+    (build-system python-build-system)
+    (propagated-inputs (list python-packaging python-sqlalchemy))
+    (home-page "https://geoalchemy-2.readthedocs.io/en/latest/")
+    (synopsis "Using SQLAlchemy with Spatial Databases")
+    (description "Using SQLAlchemy with Spatial Databases")
+    (license license:expat)))
+
 (define-public python-hilbertcurve
   (package
     (name "python-hilbertcurve")
