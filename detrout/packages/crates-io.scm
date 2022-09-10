@@ -2171,6 +2171,29 @@ threads for the current process.")
     (description "provides assert_eq! like macros with colorized diff output")
     (license license:asl2.0)))
 
+(define-public rust-sketches-ddsketch-0.2
+  (package
+    (name "rust-sketches-ddsketch")
+    (version "0.2.0")
+    (source (origin
+              (method url-fetch)
+              (uri (crate-uri "sketches-ddsketch" version))
+              (file-name (string-append name "-" version ".tar.gz"))
+              (sha256
+               (base32
+                "1rwsvarn13w8mnibl2slzk348l5xa5w2gwg4v11rrq1887jlbfff"))))
+    (build-system cargo-build-system)
+    (arguments
+     `(#:cargo-development-inputs (("rust-approx" ,rust-approx-0.5)
+                                   ("rust-rand" ,rust-rand-0.7)
+                                   ("rust-rand-distr" ,rust-rand-distr-0.2))))
+    (home-page "https://github.com/mheffner/rust-sketches-ddsketch")
+    (synopsis "A direct port of the Golang DDSketch implementation.
+")
+    (description
+     "This package provides a direct port of the Golang DDSketch implementation.")
+    (license license:asl2.0)))
+
 (define-public rust-syn-1.0.99
   (package (inherit rust-syn-1)
     (name "rust-syn")
