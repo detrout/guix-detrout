@@ -75,6 +75,22 @@
     (description "Fast read/write of AVRO files")
     (license license:expat)))
 
+(define-public python-pure-sasl
+  (package
+    (name "python-pure-sasl")
+    (version "0.6.2")
+    (source (origin
+              (method url-fetch)
+              (uri (pypi-uri "pure-sasl" version))
+              (sha256
+               (base32
+                "1x1qa61xqpx6xshgm4qir0hdr3ji6ps6m6ncna2jnpm9bmgkbhak"))))
+    (build-system python-build-system)
+    (home-page "http://github.com/thobbs/pure-sasl")
+    (synopsis "Pure Python client SASL implementation")
+    (description "Pure Python client SASL implementation")
+    (license license:expat)))
+
 (define-public librdkafka-1.9
   (package (inherit librdkafka)
     (name "librdkafka")
