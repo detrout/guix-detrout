@@ -544,6 +544,18 @@ scripts")
                (base32
                 "066bdscah69mdj3dpx8cs1wf9blqs6plqqjl36jkd1489c6xxjv5"))))))
 
+(define-public rust-cookie-0.16
+  (package (inherit rust-cookie-0.15)
+    (name "rust-cookie")
+    (version "0.16.0")
+    (source (origin
+              (method url-fetch)
+              (uri (crate-uri "cookie" version))
+              (file-name (string-append name "-" version ".tar.gz"))
+              (sha256
+               (base32
+                "01fa6z8sqqg19ya0l9ifh8vn05l5hpxdzkbh489mpymhw5np1m4l"))))))
+
 (define-public rust-core-foundation-0.9.3
   (package (inherit rust-core-foundation-0.9)
     (name "rust-core-foundation")
