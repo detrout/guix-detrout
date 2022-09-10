@@ -119,6 +119,7 @@
     (description
      "Buddy-alloc is a memory allocator for no-std Rust, used for embedded
 environments.")
+    (license license:expat)))
 
 (define-public rust-buf-min-0.7
   (package
