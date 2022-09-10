@@ -805,3 +805,23 @@ Optionally, Streamz can also work with both Pandas and cuDF dataframes, to provi
     (synopsis "Python bindings for the Apache Thrift RPC system")
     (description "Python bindings for the Apache Thrift RPC system")
     (license #f)))
+
+(define-public python-thrift-sasl
+  (package
+    (name "python-thrift-sasl")
+    (version "0.4.3")
+    (source (origin
+              (method url-fetch)
+              (uri (pypi-uri "thrift_sasl" version))
+              (sha256
+               (base32
+                "1nkkyyj6f16csc95kwkbinm62n22n0yqgkmz7adkv8ch1mv5ppav"))))
+    (build-system python-build-system)
+    (propagated-inputs (list python-pure-sasl python-six python-thrift))
+    (home-page "https://github.com/cloudera/thrift_sasl")
+    (synopsis
+     "Thrift SASL Python module that implements SASL transports for Thrift (`TSaslClientTransport`).")
+    (description
+     "Thrift SASL Python module that implements SASL transports for Thrift
+  (`TSaslClientTransport`).")
+    (license license:asl2.0)))
