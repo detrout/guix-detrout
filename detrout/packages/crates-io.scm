@@ -993,6 +993,27 @@ rustaceans.")
                        ("rust-scopeguard" ,rust-scopeguard-1)
                        ("rust-serde" ,rust-serde-1))))))
     
+(define-public rust-lockfree-0.5
+  (package
+    (name "rust-lockfree")
+    (version "0.5.1")
+    (source (origin
+              (method url-fetch)
+              (uri (crate-uri "lockfree" version))
+              (file-name (string-append name "-" version ".tar.gz"))
+              (sha256
+               (base32
+                "08yx0aq2qg37s60ki680w57ywlh97mw0y12sijwpqg0imnsr9vkl"))))
+    (build-system cargo-build-system)
+    (arguments
+     `(#:cargo-inputs (("rust-owned-alloc" ,rust-owned-alloc-0.2))))
+    (home-page "https://gitlab.com/bzim/lockfree/")
+    (synopsis
+     "This crate provides concurrent data structures and a solution to the ABA problem as an alternative of hazard pointers")
+    (description
+     "This crate provides concurrent data structures and a solution to the ABA problem
+as an alternative of hazard pointers")
+    (license license:expat)))
 
 (define-public rust-llvm-bitcode-0.1
   (package
