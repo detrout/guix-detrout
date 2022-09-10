@@ -662,6 +662,22 @@
      "This package provides a high level app and dashboarding solution for Python.")
     (license license:bsd-3)))
 
+(define-public python-parsy
+  (package
+    (name "python-parsy")
+    (version "2.0")
+    (source (origin
+              (method url-fetch)
+              (uri (pypi-uri "parsy" version))
+              (sha256
+               (base32
+                "09259wlbylcd7pky3w6r2ai5ps9d2ww515rrknb0vf5hxgh6rlvz"))))
+    (build-system python-build-system)
+    (home-page "https://github.com/python-parsy/parsy")
+    (synopsis "easy-to-use parser combinators, for parsing in pure Python")
+    (description "easy-to-use parser combinators, for parsing in pure Python")
+    (license license:expat)))
+
 (define-public python-percy
   (package
     (name "python-percy")
