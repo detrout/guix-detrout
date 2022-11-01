@@ -651,7 +651,7 @@ scripts")
                 "1g426qw2j7czkbg0vw6mzifhgy1ng4qgpp2sn4vlamkvvi57v22i"))))))
 
 (define-public rust-dialoguer-0.10
-  (package (inherit rust-dialoguer-0.3)
+  (package (inherit rust-dialoguer-0.6)
     (name "rust-dialoguer")
     (version "0.10.2")
     (source (origin
