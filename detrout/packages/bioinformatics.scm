@@ -129,7 +129,8 @@
        "17vdn4q0sdlndc2fr9svapxx6366hnrhkn0fswp1xmr0jxqh7rd1"))))
    (build-system python-build-system)
    (arguments
-     `(#:tests? #f))                    ; the build environment includes a few non std lib pkgs
+     ; the build environment includes a few non std lib pkgs
+     `(#:tests? #f))
    (native-inputs
     `(("python-sphinx" ,python-sphinx)))
    (home-page
