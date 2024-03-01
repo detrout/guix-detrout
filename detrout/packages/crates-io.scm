@@ -9,6 +9,125 @@
   #:use-module (guix build-system cargo)  ;; needed for maturin
   )
 
+(define-public rust-path-slash-0.2
+  (package (inherit rust-path-slash-0.1)
+    (name "rust-path-slash")
+    (version "0.2.1")
+    (source (origin
+              (method url-fetch)
+              (uri (crate-uri "path-slash" version))
+              (file-name (string-append name "-" version ".tar.gz"))
+              (sha256
+               (base32
+                "0hjgljv4vy97qqw9gxnwzqhhpysjss2yhdphfccy3c388afhk48y"))))))
+
+(define-public rust-indicatif-0.17
+  (package (inherit rust-indicatif-0.15)
+    (name "rust-indicatif")
+    (version "0.17.0")
+    (source (origin
+              (method url-fetch)
+              (uri (crate-uri "indicatif" version))
+              (file-name (string-append name "-" version ".tar.gz"))
+              (sha256
+               (base32
+                "1prx7c8vhy2qapijmyyi4whcjn2lbbk27cc56b06xn3hdqh2pi7w"))))
+    (arguments
+     `(#:cargo-inputs
+       (("rust-console" ,rust-console-0.13)
+        ("rust-lazy-static" ,rust-lazy-static-1)
+        ("rust-number-prefix" ,rust-number-prefix-0.4)
+        ("rust-rayon" ,rust-rayon-1)
+        ("rust-regex" ,rust-regex-1)
+        ("rust-unicode-segmentation" ,rust-unicode-segmentation-1)
+        ("rust-unicode-width" ,rust-unicode-width-0.1))
+       #:cargo-development-inputs
+       (("rust-rand" ,rust-rand-0.7)
+        ("rust-tokio" ,rust-tokio-0.2))))))
+
+(define-public rust-fs-err-2
+  (package
+    (name "rust-fs-err")
+    (version "2.11.0")
+    (source (origin
+              (method url-fetch)
+              (uri (crate-uri "fs-err" version))
+              (file-name (string-append name "-" version ".tar.gz"))
+              (sha256
+               (base32
+                "0hdajzh5sjvvdjg0n15j91mv8ydvb7ff6m909frvdmg1bw81z948"))))
+    (build-system cargo-build-system)
+    (arguments
+     (list #:cargo-inputs
+           `(("rust-autocfg" ,rust-autocfg-1)
+             ("rust-tokio" ,rust-tokio-1))
+           #:cargo-development-inputs
+           `(("rust-serde-json" ,rust-serde-json-1))))
+    (home-page "https://github.com/andrewhickman/fs-err")
+    (synopsis "@code{std::fs} with more helpful errors")
+    (description
+     "This package provides an alternative to @code{std::fs} with
+more helpful error messages.")
+    (license (list license:expat license:asl2.0))))
+
+(define-public rust-uuid-1
+  (package
+    (name "rust-uuid")
+    (version "1.6.1")
+    (source (origin
+              (method url-fetch)
+              (uri (crate-uri "uuid" version))
+              (file-name (string-append name "-" version ".tar.gz"))
+              (sha256
+               (base32
+                "0q45jxahvysldn3iy04m8xmr8hgig80855y9gq9di8x72v7myfay"))))
+    (build-system cargo-build-system)
+    (arguments
+     `(#:cargo-inputs
+       (("rust-arbitrary" ,rust-arbitrary-1)
+        ("rust-atomic" ,rust-atomic-0.5)
+        ("rust-borsh" ,rust-borsh-0.10)
+        ("rust-bytemuck" ,rust-bytemuck-1)
+        ("rust-getrandom" ,rust-getrandom-0.2)
+        ("rust-md-5" ,rust-md-5-0.10)
+        ("rust-rand" ,rust-rand-0.8)
+        ("rust-serde" ,rust-serde-1)
+        ("rust-sha1-smol" ,rust-sha1-smol-1)
+        ("rust-slog" ,rust-slog-2)
+        ("rust-uuid-macro-internal" ,rust-uuid-macro-internal-1)
+        ("rust-wasm-bindgen" ,rust-wasm-bindgen-0.2)
+        ("rust-zerocopy" ,rust-zerocopy-0.6))
+       #:cargo-development-inputs
+       (("rust-bincode" ,rust-bincode-1)
+        ("rust-rustversion" ,rust-rustversion-1)
+        ("rust-serde-derive" ,rust-serde-derive-1)
+        ("rust-serde-json" ,rust-serde-json-1)
+        ("rust-serde-test" ,rust-serde-test-1)
+        ("rust-trybuild" ,rust-trybuild-1)
+        ("rust-wasm-bindgen" ,rust-wasm-bindgen-0.2)
+        ("rust-wasm-bindgen-test" ,rust-wasm-bindgen-test-0.3)
+        ("rust-windows-sys" ,rust-windows-sys-0.48))))
+    (home-page "https://github.com/uuid-rs/uuid")
+    (synopsis "Library to generate and parse UUIDs")
+    (description
+     "This package provides a library to generate and parse UUIDs.")
+    ;; The user can choose either license.
+    (license (list license:asl2.0 license:expat))))
+
+(define-public rust-termcolor-1.1.3
+  (package (inherit rust-termcolor-1)
+    (name "rust-termcolor")
+    (version "1.1.3")
+    (source (origin
+              (method url-fetch)
+              (uri (crate-uri "termcolor" version))
+              (file-name (string-append name "-" version ".tar.gz"))
+              (sha256
+               (base32
+                "0mbpflskhnz3jf312k50vn0hqbql8ga2rk0k79pkgchip4q4vcms"))))
+    (arguments
+     `(#:cargo-inputs (("rust-winapi-util" ,rust-winapi-util-0.1))))))
+
 (define-public rust-anyhow-1.0.63
   (package (inherit rust-anyhow-1)
     (name "rust-anyhow")
@@ -216,18 +335,6 @@ environments.")
     (description "Read/write Windows cabinet (CAB) files")
     (license license:expat)))
 
-(define-public rust-camino-1.1
-  (package (inherit rust-camino-1)
-    (name "rust-camino")
-    (version "1.1.1")
-    (source (origin
-              (method url-fetch)
-              (uri (crate-uri "camino" version))
-              (file-name (string-append name "-" version ".tar.gz"))
-              (sha256
-               (base32
-                "07jc2jsyyhd2d0clpr0ama61b2hv09qzbfba2mx27pc87qg0xbc8"))))))
-
 (define-public rust-cargo-options-0.3
   (package
     (name "rust-cargo-options")
@@ -361,7 +468,7 @@ environments.")
         ("rust-quote" ,rust-quote-1)
         ("rust-serde" ,rust-serde-1)
         ("rust-serde-json" ,rust-serde-json-1)
-        ("rust-syn" ,rust-syn-1.0.99)
+        ("rust-syn" ,rust-syn-1)
         ("rust-tempfile" ,rust-tempfile-3)
         ("rust-toml" ,rust-toml-0.5))
        #:cargo-development-inputs
@@ -891,30 +998,6 @@ rustaceans.")
     (synopsis "Panic messages for humans")
     (description "Panic messages for humans")
     (license (list license:expat license:asl2.0))))
-
-(define-public rust-indicatif-0.17
-  (package (inherit rust-indicatif-0.15)
-    (name "rust-indicatif")
-    (version "0.17.0")
-    (source (origin
-              (method url-fetch)
-              (uri (crate-uri "indicatif" version))
-              (file-name (string-append name "-" version ".tar.gz"))
-              (sha256
-               (base32
-                "1prx7c8vhy2qapijmyyi4whcjn2lbbk27cc56b06xn3hdqh2pi7w"))))
-    (arguments
-     `(#:cargo-inputs
-       (("rust-console" ,rust-console-0.13)
-        ("rust-lazy-static" ,rust-lazy-static-1)
-        ("rust-number-prefix" ,rust-number-prefix-0.4)
-        ("rust-rayon" ,rust-rayon-1)
-        ("rust-regex" ,rust-regex-1)
-        ("rust-unicode-segmentation" ,rust-unicode-segmentation-1)
-        ("rust-unicode-width" ,rust-unicode-width-0.1))
-       #:cargo-development-inputs
-       (("rust-rand" ,rust-rand-0.7)
-        ("rust-tokio" ,rust-tokio-0.2))))))
 
 (define-public rust-intrusive-collections-0.9
   (package
@@ -1453,32 +1536,6 @@ inter-operation between primitives and enums easier)")
     (description "async-std intergration for ntex framework")
     (license license:expat)))
 
-(define-public rust-ntex-bytes-0.1
-  (package
-    (name "rust-ntex-bytes")
-    (version "0.1.16")
-    (source (origin
-              (method url-fetch)
-              (uri (crate-uri "ntex-bytes" version))
-              (file-name (string-append name "-" version ".tar.gz"))
-              (sha256
-               (base32
-                "0hangmxzqhwh2948fpsvwwncpmlb9a6813gsp1kf62alvqwbqivm"))))
-    (build-system cargo-build-system)
-    (arguments
-     `(#:cargo-inputs (("rust-bitflags" ,rust-bitflags-1)
-                       ("rust-bytes" ,rust-bytes-1)
-                       ("rust-futures-core" ,rust-futures-core-0.3)
-                       ("rust-serde" ,rust-serde-1)
-                       ("rust-simdutf8" ,rust-simdutf8-0.1))
-       #:cargo-development-inputs (("rust-ntex" ,rust-ntex-0.5)
-                                   ("rust-serde-json" ,rust-serde-json-1)
-                                   ("rust-serde-test" ,rust-serde-test-1))))
-    (home-page "https://github.com/ntex-rs")
-    (synopsis "Types and traits for working with bytes (bytes crate fork)")
-    (description "Types and traits for working with bytes (bytes crate fork)")
-    (license license:expat)))
-
 (define-public rust-ntex-codec-0.6
   (package
     (name "rust-ntex-codec")
@@ -1969,23 +2026,6 @@ threads for the current process.")
      "This package provides a crate to help reducing manual memory management errors.")
     (license license:expat)))
 
-(define-public rust-parking-lot-0.12
-  (package (inherit rust-parking-lot-0.11)
-    (name "rust-parking-lot")
-    (version "0.12.1")
-    (source (origin
-              (method url-fetch)
-              (uri (crate-uri "parking-lot" version))
-              (file-name (string-append name "-" version ".tar.gz"))
-              (sha256
-               (base32
-                "13r2xk7mnxfc5g0g6dkdxqdqad99j7s7z8zhzz4npw5r0g0v4hip"))))
-    (arguments
-     `(#:cargo-inputs (("rust-lock-api" ,rust-lock-api-0.4.8)
-                       ("rust-parking-lot-core" ,rust-parking-lot-core-0.9.3))
-       #:cargo-development-inputs (("rust-bincode" ,rust-bincode-1)
-                                   ("rust-rand" ,rust-rand-0.8))))))
-
 (define-public rust-parking-lot-core-0.9.3
   (package (inherit rust-parking-lot-0.9)
     (name "rust-parking-lot-core")
@@ -2006,19 +2046,6 @@ threads for the current process.")
                        ("rust-smallvec" ,rust-smallvec-1)
                        ("rust-thread-id" ,rust-thread-id-4)
                        ("rust-windows-sys" ,rust-windows-sys-0.36))))))
-
-
-(define-public rust-path-slash-0.2
-  (package (inherit rust-path-slash-0.1)
-    (name "rust-path-slash")
-    (version "0.2.1")
-    (source (origin
-              (method url-fetch)
-              (uri (crate-uri "path-slash" version))
-              (file-name (string-append name "-" version ".tar.gz"))
-              (sha256
-               (base32
-                "0hjgljv4vy97qqw9gxnwzqhhpysjss2yhdphfccy3c388afhk48y"))))))
 
 (define-public rust-pep440-0.2
   (package
@@ -2465,33 +2492,6 @@ threads for the current process.")
      "This package provides a direct port of the Golang DDSketch implementation.")
     (license license:asl2.0)))
 
-(define-public rust-syn-1.0.99
-  (package (inherit rust-syn-1)
-    (name "rust-syn")
-    (version "1.0.99")
-    (source (origin
-              (method url-fetch)
-              (uri (crate-uri "syn" version))
-              (file-name (string-append name "-" version ".tar.gz"))
-              (sha256
-               (base32
-                "04xba78p559nl737llv7nqcwm723dp6ah5bbp0h5w1amqrpfznsq"))))
-    (arguments
-     `(#:cargo-inputs (("rust-proc-macro2" ,rust-proc-macro2-1.0.43)
-                       ("rust-quote" ,rust-quote-1)
-                       ("rust-unicode-ident" ,rust-unicode-ident-1))
-       #:cargo-development-inputs (("rust-anyhow" ,rust-anyhow-1)
-                                   ("rust-automod" ,rust-automod-1)
-                                   ("rust-flate2" ,rust-flate2-1)
-                                   ("rust-insta" ,rust-insta-1)
-                                   ("rust-rayon" ,rust-rayon-1)
-                                   ("rust-ref-cast" ,rust-ref-cast-1)
-                                   ("rust-regex" ,rust-regex-1)
-                                   ("rust-reqwest" ,rust-reqwest-0.11)
-                                   ("rust-syn-test-suite" ,rust-syn-test-suite-0.0.0)
-                                   ("rust-tar" ,rust-tar-0.4)
-                                   ("rust-termcolor" ,rust-termcolor-1))))))
-
 (define-public rust-syn-test-suite-0.0.0
   (package
     (name "rust-syn-test-suite")
@@ -2715,20 +2715,6 @@ logging and/or tracing infrastructure before running tests.")
      `(#:cargo-inputs (("rust-once-cell" ,rust-once-cell-1)
                        ("rust-valuable" ,rust-valuable-0.1))))))
 
-(define-public rust-termcolor-1.1.3
-  (package (inherit rust-termcolor-1)
-    (name "rust-termcolor")
-    (version "1.1.3")
-    (source (origin
-              (method url-fetch)
-              (uri (crate-uri "termcolor" version))
-              (file-name (string-append name "-" version ".tar.gz"))
-              (sha256
-               (base32
-                "0mbpflskhnz3jf312k50vn0hqbql8ga2rk0k79pkgchip4q4vcms"))))
-    (arguments
-     `(#:cargo-inputs (("rust-winapi-util" ,rust-winapi-util-0.1))))))
-
 (define-public rust-uds-windows-1
   (package (inherit rust-uds-windows-0.1)
     (name "rust-uds-windows")
@@ -2788,18 +2774,6 @@ logging and/or tracing infrastructure before running tests.")
      "Determine whether characters have the XID_Start or XID_Continue properties
 according to Unicode Standard Annex #31")
     (license #f)))
-
-(define-public rust-uuid-1
-  (package (inherit rust-uuid-0.7)
-    (name "rust-uuid")
-    (version "1.1.2")
-    (source (origin
-              (method url-fetch)
-              (uri (crate-uri "uuid" version))
-              (file-name (string-append name "-" version ".tar.gz"))
-              (sha256
-               (base32
-                "0bwdz7bgigbh4625ga564xxbqy4srhbmzq3nqkz1ypsd67s6jr6x"))))))
 
 (define-public rust-v-htmlescape-0.15
   (package
