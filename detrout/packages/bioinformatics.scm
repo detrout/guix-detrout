@@ -133,7 +133,7 @@
    (native-inputs
     `(("python-sphinx" ,python-sphinx)))
    (home-page
-    "https://github.com/jackmaney/python-stdlib-list")
+    "https://github.com/pypi/-stdlib-list")
    (synopsis
     "A list of Python Standard Libraries (2.6-7, 3.2-9).")
    (description
@@ -156,7 +156,7 @@
    (propagated-inputs
     `(("python-stdlib-list" ,python-stdlib-list)))
    (home-page
-    "https://gitlab.com/joelostblom/sinfo")
+    "https://gitlab.com/joelostblom/session_info")
    (synopsis
     "sinfo outputs version information for modules loaded in the current session, Python, and the OS.")
    (description
@@ -203,7 +203,7 @@
        ("python-pytest" ,python-pytest)
        ("python-flit" ,python-flit)
        ("python-setuptools-scm" ,python-setuptools-scm)))
-    (home-page "https://github.com/theislab/anndata")
+    (home-page "https://github.com/scverse/anndata")
     (synopsis "Annotated data for data analysis pipelines")
     (description "Anndata is a package for simple (functional) high-level APIs
 for data analysis pipelines.  In this context, it provides an efficient,
@@ -270,7 +270,7 @@ object-oriented library such as @code{scikit-learn}.")
      `(("python-pytest" ,python-pytest)
        ("python-pytoml" ,python-pytoml)
        ("python-setuptools-scm" ,python-setuptools-scm)))
-    (home-page "https://github.com/theislab/scanpy")
+    (home-page "https://github.com/scverse/scanpy")
     (synopsis "Single-Cell Analysis in Python.")
     (description "Scanpy is a scalable toolkit for analyzing single-cell gene
 expression data.  It includes preprocessing, visualization, clustering,
@@ -292,7 +292,7 @@ million cells.")
         (base32
           "1jbfh00bkrf0i5psa6n75rlgmqp5389xixa9j29w8rxhah6g7r1i"))))
   (build-system python-build-system)
-  (home-page "http://brentp.github.io/interlap")
+  (home-page "http://brentp.github.io/interlap/")
   (synopsis
     "interlap: fast, simple interval overlap testing")
   (description
