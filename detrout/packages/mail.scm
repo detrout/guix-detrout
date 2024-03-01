@@ -60,7 +60,8 @@
                  (("# (AUTH_PLAINTEXT=yes)" all line) line)
                  (("# (AUTH_SPA=yes)" all line) line)
                  (("# (AUTH_TLS=yes)" all line) line)
-                 (("# (LOG_FILE_PATH=/var/log/)exim_%slog" all var) (string-append var "exim/%slog")))
+                 (("# (LOG_FILE_PATH=/var/log/)exim_%slog" all var)
+                  (string-append var "exim/%slog")))
                ;; This file has hard-coded relative file names for tools despite
                ;; the zcat configuration above.
                (substitute* '("src/exigrep.src")
