@@ -374,7 +374,7 @@ million cells.")
             (map (lambda (directory)
                    (string-append directory "/detrout/packages/patches"))
                  %load-path)))
-      (search-patches "liftoff-permissive-requires.patch")))))
+      (search-patches "python-liftoff-permissive-requires.patch")))))
    (build-system python-build-system)
 ;;   (arguments
 ;;    `(#:tests? #f))
