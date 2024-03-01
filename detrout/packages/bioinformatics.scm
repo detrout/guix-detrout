@@ -405,3 +405,18 @@ best-performing algorithm(s) to date on today's most advanced CPUs.")
    (synopsis "Gene annotation mapping tool")
    (description "Gene annotation mapping tool")
    (license license:gpl3)))
+
+
+(define-public star-2.7.10a
+  (package (inherit star)
+    (name "star")
+    (version "2.7.10a")
+    (source
+     (origin
+      (method git-fetch)
+      (uri (git-reference
+            (url "https://github.com/alexdobin/STAR")
+            (commit (string-append "v" version))))
+      (file-name (git-file-name name version))
+      (sha256
+       (base32 "0lmdcvrfipmm41bbkqirf06yf9szikxvhcgl9iwrb8vqjzszfjrj"))))))
