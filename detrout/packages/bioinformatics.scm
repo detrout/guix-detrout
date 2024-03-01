@@ -135,9 +135,9 @@
    (home-page
     "https://github.com/pypi/-stdlib-list")
    (synopsis
-    "A list of Python Standard Libraries (2.6-7, 3.2-9).")
+    "List of Python Standard Libraries (2.6-7, 3.2-9)")
    (description
-    "A list of Python Standard Libraries (2.6-7, 3.2-9).")
+    "List of Python Standard Libraries (2.6-7, 3.2-9)")
    (license license:expat)))
 
 
@@ -158,9 +158,11 @@
    (home-page
     "https://gitlab.com/joelostblom/session_info")
    (synopsis
-    "sinfo outputs version information for modules loaded in the current session, Python, and the OS.")
+    "Reports version information for modules loaded")
    (description
-    "sinfo outputs version information for modules loaded in the current session, Python, and the OS.")
+    "Reports version information for modules loaded in the current
+ session, Python, and the OS.")
+
    (license license:bsd-3)))
 
 (define-public python-anndata
@@ -209,7 +211,7 @@
 for data analysis pipelines.  In this context, it provides an efficient,
 scalable way of keeping track of data together with learned annotations and
 reduces the code overhead typically encountered when using a mostly
-object-oriented library such as @code{scikit-learn}.")
+object-oriented library such as scikit-learn.")
     (license license:bsd-3)))
 
 (define-public python-scanpy
@@ -294,9 +296,9 @@ million cells.")
   (build-system python-build-system)
   (home-page "http://brentp.github.io/interlap/")
   (synopsis
-    "interlap: fast, simple interval overlap testing")
+    "Interlap: fast, simple interval overlap testing")
   (description
-    "interlap: fast, simple interval overlap testing")
+    "Interlap: fast, simple interval overlap testing")
   (license license:expat)))
 
 
@@ -323,7 +325,17 @@ million cells.")
     `(("libomp" ,libomp)
       ("zlib" ,zlib)))
    (synopsis "Pairwise Sequence Alignment Library")
-   (description "parasail is a SIMD C (C99) library containing implementations of the Smith-Waterman (local), Needleman-Wunsch (global), and various semi-global pairwise sequence alignment algorithms. Here, semi-global means insertions before the start or after the end of either the query or target sequence are optionally not penalized. parasail implements most known algorithms for vectorized pairwise sequence alignment, including diagonal [Wozniak, 1997], blocked [Rognes and Seeberg, 2000], striped [Farrar, 2007], and prefix scan [Daily, 2015]. Therefore, parasail is a reference implementation for these algorithms in addition to providing an implementation of the best-performing algorithm(s) to date on today's most advanced CPUs.")
+   (description "parasail is a SIMD C (C99) library containing implementations of the
+Smith-Waterman (local), Needleman-Wunsch (global), and various
+semi-global pairwise sequence alignment algorithms.  Here, semi-global
+means insertions before the start or after the end of either the query
+or target sequence are optionally not penalized.  parasail implements
+most known algorithms for vectorized pairwise sequence alignment,
+including diagonal [Wozniak, 1997], blocked [Rognes and Seeberg, 2000]
+striped [Farrar, 2007], and prefix scan [Daily, 2015].
+Therefore, parasail is a reference implementation for these
+algorithms in addition to providing an implementation of the
+best-performing algorithm(s) to date on today's most advanced CPUs.")
    (license license:bsd-3)))
 
 (define-public python-parasail
@@ -352,9 +364,9 @@ million cells.")
      ("parasail" ,parasail)))
   (home-page
     "https://github.com/jeffdaily/parasail-python")
-  (synopsis "pairwise sequence alignment library")
+  (synopsis "Pairwise sequence alignment library")
   (description
-    "pairwise sequence alignment library")
+    "Pairwise sequence alignment library")
   (license license:bsd-3)))
 
 (define-public python-liftoff
@@ -389,6 +401,6 @@ million cells.")
       ("python-pysam" ,python-pysam)
       ("python-ujson" ,python-ujson)))
    (home-page "https://github.com/ashumate/Liftoff")
-   (synopsis "A gene annotation mapping tool")
-   (description "A gene annotation mapping tool")
+   (synopsis "Gene annotation mapping tool")
+   (description "Gene annotation mapping tool")
    (license license:gpl3)))

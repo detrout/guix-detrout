@@ -120,9 +120,10 @@
     (home-page
       "https://github.com/snapview/tokio-tungstenite")
     (synopsis
-      "Tokio binding for Tungstenite, the Lightweight stream-based WebSocket implementation")
+      "Tokio binding for Tungstenite")
     (description
-      "Tokio binding for Tungstenite, the Lightweight stream-based WebSocket implementation")
+     "Tokio binding for Tungstenite, the Lightweight stream-based
+ WebSocket implementation")
     (license license:expat)))
 
 (define-public rust-argparse-0.2
@@ -311,7 +312,8 @@ WIP
     (synopsis
       "A handy library for describing asynchronous code declaratively")
     (description
-      "This package provides a handy library for describing asynchronous code declaratively")
+     "This package provides a handy library for describing asynchronous
+ code declaratively")
     (license license:expat)))
 
 (define-public rust-splay-tree-0.2
@@ -360,9 +362,10 @@ WIP
         (("rust-rand" ,rust-rand-0.3))))
     (home-page "https://github.com/sile/trackable")
     (synopsis
-      "This library provides a way to track objects manually as an alternative to mechanisms like backtracing")
+      "provides a way to track objects manually")
     (description
-      "This library provides a way to track objects manually as an alternative to mechanisms like backtracing")
+     "This library provides a way to track objects manually as an
+alternative to mechanisms like backtracing")
     (license license:expat)))
 
 
@@ -454,9 +457,10 @@ WIP
          ("rust-httparse" ,rust-httparse-1))))
     (home-page "https://github.com/dwango/fibers-rs")
     (synopsis
-      "A Rust library to execute a number of lightweight asynchronous tasks (a.k.a, fibers) based on futures and mio")
+      "A Rust library to execute a number of lightweight asynchronous tasks")
     (description
-      "This package provides a Rust library to execute a number of lightweight asynchronous tasks (a.k.a, fibers) based on futures and mio")
+     "This package provides a Rust library to execute a number of lightweight
+asynchronous tasks (a.k.a, fibers) based on futures and mio")
     (license license:expat)))
 
 (define-public rust-webrtc-sdp-0.3
@@ -484,9 +488,11 @@ WIP
     (home-page
       "https://github.com/mozilla/webrtc-sdp")
     (synopsis
-      "This create parses strings in the format of the Session Description Protocol according to RFC4566. It specifically supports the subset of features required to support WebRTC according to the JSEP draft.")
+      "create and read strings in the format of the Session Description Protocol")
     (description
-      "This create parses strings in the format of the Session Description Protocol according to RFC4566.  It specifically supports the subset of features required to support WebRTC according to the JSEP draft.")
+     "This create parses strings in the format of the Session Description Protocol
+according to RFC4566.  It specifically supports the subset of
+features required to support WebRTC according to the JSEP draft.")
     (license license:mpl2.0)))
 
 (define-public rust-bindgen-0.56

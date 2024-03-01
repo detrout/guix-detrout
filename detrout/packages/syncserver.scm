@@ -378,7 +378,9 @@ But none of that is ready yet; caveat emptor.")
     (home-page "https://github.com/mozilla-services/")
     (synopsis "Firefox Sync TokenServer")
     (description
-     "This service is responsible for allocating Firefox Sync users to one of several Sync Storage nodes. It provides the \"glue\" between Firefox Accounts and the SyncStorage API, and handles:
+     "This service is responsible for allocating Firefox Sync users
+to one of several Sync Storage nodes. It provides the \"glue\" between
+Firefox Accounts and the SyncStorage API, and handles:
 
   * Checking the user's credentials as provided by FxA
   * Sharding users across storage nodes in a way that evenly distributes server load

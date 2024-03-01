@@ -49,7 +49,8 @@
    (home-page "https://github.com/google/pyu2f/")
    (synopsis "U2F host library for interacting with a U2F device over USB.")
    (description
-    "pyu2f is a python based U2F host library for Linux, Windows, and MacOS. It provides functionality for interacting with a U2F device over USB.")
+    "pyu2f is a python based U2F host library for Linux, Windows, and MacOS.
+It provides functionality for interacting with a U2F device over USB.")
    (license license:asl2.0)))
 
 (define-public python-proto-plus
@@ -70,7 +71,10 @@
    (home-page "https://github.com/googleapis/proto-plus-python.git")
    (synopsis "This is a wrapper around protocol buffers so they behave like python types")
    (description
-    "This is a wrapper around protocol buffers. Protocol buffers is a specification format for APIs, such as those inside Google. This library provides protocol buffer message classes and objects that largely behave like native Python types.")
+    "This is a wrapper around protocol buffers. Protocol buffers is a
+specification format for APIs, such as those inside Google. This library
+provides protocol buffer message classes and objects that largely behave
+like native Python types.")
    (license license:asl2.0)))
 
 
@@ -96,7 +100,8 @@
    (home-page "https://github.com/googleapis/googleapis")
    (synopsis "gRPC library for google-iam-v1")
    (description
-    "grpc-google-iam-v1 is the IDL-derived library for the google-iam (v1) service in the googleapis repository.")
+    "grpc-google-iam-v1 is the IDL-derived library for the google-iam (v1)
+ service in the googleapis repository.")
    (license license:asl2.0)))
 
 
@@ -121,7 +126,13 @@
    (home-page "https://github.com/googleapis/python-spanner")
    (synopsis "Scalable database service that offers consistency and scalability")
    (description
-    "Cloud Spanner is the world’s first fully managed relational database service to offer both strong consistency and horizontal scalability for mission-critical online transaction processing (OLTP) applications. With Cloud Spanner you enjoy all the traditional benefits of a relational database; but unlike any other relational database service, Cloud Spanner scales horizontally to hundreds or thousands of servers to handle the biggest transactional workloads.")
+    "Cloud Spanner is the world’s first fully managed relational database
+service to offer both strong consistency and horizontal scalability
+for mission-critical online transaction processing (OLTP)
+applications. With Cloud Spanner you enjoy all the traditional
+benefits of a relational database; but unlike any other relational
+database service, Cloud Spanner scales horizontally to hundreds or
+thousands of servers to handle the biggest transactional workloads.")
    (license license:asl2.0)))
 
 ;; (define-public python-
