@@ -48,7 +48,7 @@
        ("autoconf" ,autoconf)
        ("automake" ,automake)
        ("openssl" ,openssl)
-       ("qt" ,qtbase)))
+       ("qtbase" ,qtbase)))
     (arguments
      `(#:phases
        (modify-phases %standard-phases
@@ -204,7 +204,7 @@ d output formats.")
        ("pidgin" ,pidgin)
        ("popt" ,popt)
        ("protobuf" ,protobuf)
-       ("qt" ,qtbase)
+       ("qtbase" ,qtbase)
        ("sqlite" ,sqlite)
        ("swift-im" ,swift-im)
        ("libxml2" ,libxml2)))
