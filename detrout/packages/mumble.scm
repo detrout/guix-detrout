@@ -673,8 +673,8 @@ features required to support WebRTC according to the JSEP draft.")
     (description
      "mumble-web-proxy is a Mumble to WebSocket+WebRTC proxy.
 
-The Mumble protocol uses TCP for control and UDP for voice. This proxy
-bridges those to WebSocket for control and WebRTC for voice.
+The Mumble protocol uses TCP for control and UDP for voice.  This
+proxy bridges those to WebSocket for control and WebRTC for voice.
 
 While not limited to, its primary use-case is allowing mumble-web to
 connect to vanilla Mumble 1.2/1.3 servers.
