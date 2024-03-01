@@ -254,7 +254,7 @@ message_size_limit = MESSAGE_SIZE_LIMIT
 # is shown in this commented example. As for virus scanning, you must also
 # modify the acl_check_data access control list to enable spam scanning.
 
-spamd_address = 127.0.0.1 11333 variant=rspamd
+# spamd_address = 127.0.0.1 783
 
 # Domain used to qualify unqualified recipient addresses
 # If this option is not set, the qualify_domain value is used.
@@ -399,7 +399,7 @@ spool_directory = SPOOLDIR
 
 # trusted users can set envelope-from to arbitrary values
 .ifndef MAIN_TRUSTED_USERS
-MAIN_TRUSTED_USERS = uucp
+MAIN_TRUSTED_USERS =
 .endif
 trusted_users = MAIN_TRUSTED_USERS
 .ifdef MAIN_TRUSTED_GROUPS
@@ -1117,6 +1117,7 @@ acl_check_data:
 "))
 
 
+; spamd_address = 127.0.0.1 11333 variant=rspamd
 (define (router-exim-rspamd port config)
   (format port "  # scan the message with rspamd
   warn spam = nobody:true
@@ -1214,9 +1215,9 @@ domain_literal:
 hubbed_hosts:
   debug_print = \"R: hubbed_hosts for $domain\"
   driver = manualroute
-  domains = \"${if exists{CONFDIR/hubbed_hosts}\\
+  domains = ${if exists{CONFDIR/hubbed_hosts}\\
                    {partial-lsearch;CONFDIR/hubbed_hosts}\\
-              fail}\"
+              fail}
   same_domain_copy_routing = yes
   route_data = ${lookup{$domain}partial-lsearch{CONFDIR/hubbed_hosts}}
   transport = remote_smtp
@@ -2438,23 +2439,26 @@ PASSWDLINE=${sg{\\
 
            (let ((uid (passwd:uid (getpw "exim")))
                  (gid (group:gid (getgr "exim"))))
+             (mkdir-p "/etc/exim")
              (mkdir-p "/var/spool/exim")
-             (chown "/var/spool/exim" uid gid))
+             (chown "/var/spool/exim" uid gid)
+             (mkdir-p "/var/log/exim")
+             (chown "/var/log/exim" uid gid))
 
-           (zero? (system* #$(file-append package "/bin/exim")
-                           "-bV" "-C" #$(dc-exim-computed-config-file
-                                         (make-dc-exim-configuration configtype
-                                                                     hostname
-                                                                     other-hostnames
-                                                                     local-interface
-                                                                     readhost
-                                                                     relay-domains
-                                                                     minimaldns
-                                                                     relay-nets
-                                                                     smarthost
-                                                                     hide-mailname
-                                                                     localdelivery
-                                                                     package)))))))))
+           (system* #$(file-append package "/bin/exim")
+                    "-bV" "-C" #$(dc-exim-computed-config-file
+                                  (make-dc-exim-configuration configtype
+                                                              hostname
+                                                              other-hostnames
+                                                              local-interface
+                                                              readhost
+                                                              relay-domains
+                                                              minimaldns
+                                                              relay-nets
+                                                              smarthost
+                                                              hide-mailname
+                                                              localdelivery
+                                                              package))))))))
 
 
 (define dc-exim-profile
