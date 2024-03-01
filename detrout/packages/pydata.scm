@@ -488,7 +488,7 @@
                             python-numpy
                             python-packaging
                             python-pandas
-;                            python-panel
+;                            python-panel ;needs a bunch of js libraries not available.
                             python-param
                             python-pyviz-comms))
    (native-inputs (list python-bokeh
