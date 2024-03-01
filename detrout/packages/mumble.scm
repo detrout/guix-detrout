@@ -387,8 +387,7 @@ alternative to mechanisms like backtracing")
        (sha256
         (base32
 ;;         "0gvncywvlanffpv849qncjfyrr7hqrs1wr6a0g54pz1vp4vr6qjj"
-         "0bynfnvbza9q1r87pvbll0iwpm3d8nw8vsdkh23j9h2c757giscg"
-         ))))
+         "0bynfnvbza9q1r87pvbll0iwpm3d8nw8vsdkh23j9h2c757giscg"))))
     (build-system cargo-build-system)
     (arguments
      `(#:rust ,rust

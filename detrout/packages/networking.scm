@@ -8,8 +8,7 @@
   #:use-module (guix build-system python)
   #:use-module (guix download)
   #:use-module (guix git-download)
-  #:use-module (guix packages)
-  )
+  #:use-module (guix packages))
 
 (define-public python-avro
   (package
